@@ -1,0 +1,146 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              DADOS APLICAÇÃO
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              DADOS DA APLICAÇÃO
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group" >
+                    <label>LOGO: </label>
+                    <br>
+                    <img ng-src="../assets/images/acoes/{{dadosplano.imagem_acao}}" style="height:70px;">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>DESCRIÇÃO: </label>
+                    <input type="text" class="form-control" placeholder="Digite a descrição do plano" ng-model="dadosplano.descricao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR USD: </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor em USD" ng-model="dadosplano.valor">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValor" ng-bind-html="errorValor"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>GANHO DIÁRIO (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem ganho" ng-model="dadosplano.porcentagem_ganho">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorGanho" ng-bind-html="errorGanho"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>PERCA (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem perca" ng-model="dadosplano.porcentagem_perca">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPerca" ng-bind-html="errorPerca"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>LIMITE MÁXIMO INVESTIMENTOS: </label>
+                    <input type="text" class="form-control" placeholder="Digite o limite máximo de investimentos" ng-model="dadosplano.limite_maximo">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorLimiteMaximo" ng-bind-html="errorLimiteMaximo"></span>
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>LIMITE MÁXIMO POTENCIALIZAR: </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor máximo que poderá ser potencializado" ng-model="dadosplano.potencializar">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPotencializar" ng-bind-html="errorPotencializar"></span>
+                  </div>
+                </div> -->
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>TAXA SAQUE (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a taxa de saque" ng-model="dadosplano.taxa_saque">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorTaxaSaque" ng-bind-html="errorTaxaSaque"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR MÍNIMO SAQUE: </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor mínimo de saque" ng-model="dadosplano.valor_minimo_saque">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorMinSaque" ng-bind-html="errorValorMinSaque"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR APLICAÇÃO: </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor da ação" ng-model="dadosplano.valor_acao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorAplicacao" ng-bind-html="errorValorAplicacao"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleSelect1">SUBIR/DESCER</label>
+                    <select class="form-control" ng-model="dadosplano.subir_descer">
+                      <option value="">Escolha uma opção</option>
+                      <option value="SUBIR">SUBIR</option>
+                      <option value="DESCER">DESCER</option>
+                    </select>
+                  </div>
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorSubirDescer" ng-bind-html="errorSubirDescer"></span>
+                </div>
+                <div class="col-md-12">
+                  <div class="row" ng-controller="uploadCtrl">
+                    <div class="col-md-12" style="margin-top:5px;">
+                      <input type="file" style="border:0px;" class="btn btn-primary btn-sm btn-block" file-input="files"/>
+                    </div>
+                    <div class="col-md-12" style="margin-top:10px; ">
+                      <span class="text-secondary" style="font-size:12px; font-weight:bold;" ng-bind-html="errorComprovante"></span>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom:10px;">
+                      <button ng-click="carregarImgComprovante(dadosplano.id)" class="btn btn-primary btn-sm">Enviar Comprovante</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" ng-click="atualizarPlano()">ATUALIZAR DADOS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

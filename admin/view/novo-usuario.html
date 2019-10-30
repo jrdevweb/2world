@@ -1,0 +1,119 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              <button class="btn btn-danger btn-sm"></button>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" style="background:#4d5668; color: #fff;">
+            NOVO USUÁRIO
+          </div>
+          <div class="card-block" style="padding:15px;">
+            <h4 class="card-title">DADOS</h4>
+            <div class="row">
+
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>NOME: </label>
+                  <input type="text" class="form-control" placeholder="Digite o nome" ng-model="cadastro.nome" >
+                  <span class=" text-validacao-error text-danger animated fadeIn" ng-show="errorNome" ng-bind-html="errorNome"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>EMAIL:  </label>
+                  <input type="text" class="form-control" placeholder="Digite o email" ng-model="cadastro.email">
+                  <span class=" text-validacao-error text-danger animated fadeIn" ng-show="errorEmail" ng-bind-html="errorEmail"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>CPF: </label>
+                  <input type="text" class="form-control" placeholder="Digite o CPF" ng-model="cadastro.cpf" mask="999.999.999-99">
+                  <span class=" text-validacao-error text-danger animated fadeIn" ng-show="errorCPF" ng-bind-html="errorCPF"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>DATA NASCIMENTO: </label>
+                  <input type="text" class="form-control" placeholder="Digite a data de nascimento" ng-model="cadastro.data_nascimento" mask="99/99/9999">
+                  <span class=" text-validacao-error text-danger animated fadeIn" ng-show="errorDataNascimento" ng-bind-html="errorDataNascimento"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>CONTA ATIVA: </label>
+                  <select ng-model="cadastro.ativo" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="SIM">SIM</option>
+                    <option value="NAO">NAO</option>
+                  </select>
+                  <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorAtivo" ng-bind-html="errorAtivo"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>ROBÔ LIGADO: </label>
+                  <select ng-model="cadastro.robo_ligado" class="form-control">
+                    <option value="">Selecione</option>
+                    <option value="SIM">SIM</option>
+                    <option value="NAO">NAO</option>
+                  </select>
+                  <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorRobo" ng-bind-html="errorRobo"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" ng-init="listarPlanos()">
+                  <label>PLANO ROBÔ: </label>
+                  <select ng-model="cadastro.plano" class="form-control">
+                    <option value="">Selecione</option>
+                    <option ng-repeat="p in planos" value="{{p.id}}">{{p.valor}}</option>
+                  </select>
+                  <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorPlano" ng-bind-html="errorPlano"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>SENHA:</label>
+                  <input type="text" class="form-control" placeholder="Digite a senha" ng-model="cadastro.senha" >
+                  <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorSenha" ng-bind-html="errorSenha"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" ng-click="cadastrarUsuario()">CADASTRAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

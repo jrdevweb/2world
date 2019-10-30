@@ -1,0 +1,184 @@
+@font-face {font-family: "DS-Digital";
+src: url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.eot");
+src: url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.eot?#iefix") format("embedded-opentype"),
+url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.woff2") format("woff2"),
+url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.woff") format("woff"),
+url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.ttf") format("truetype"),
+url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.svg#DS-Digital") format("svg");
+}
+
+#bitcoin{
+  margin-bottom: 30px;
+  width:200px;
+  margin:0 auto;
+  display:block;
+  text-align:center;
+  color:#888888;
+  position: absolute;
+}
+
+.path {
+  stroke-dasharray: 2110;
+  stroke-dashoffset: 2110;
+  stroke-width:2;
+  stroke-linecap:round;
+  animation: dash 6s linear infinite;
+  fill-opacity:0;
+  stroke:orange;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 2110;
+    opacity:0;
+    stroke:orange;
+  }
+  15%{
+    opacity:1;
+    stroke:orange;
+  }
+  70%{
+    opacity:1;
+    stroke:orange;
+  }
+  100%{
+    stroke-dashoffset:0;
+    opacity:0;
+    stroke:yellow;
+  }
+}
+
+.card-gradient{
+  background: #0f0c29; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #65709c, #414D80); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #65709c, #414D80); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+
+.text-validacao-error{
+  font-size:14px !important;
+}
+
+.card-login{
+  background: #1f2738 !important;
+  color: #fff;
+}
+
+.form-login{
+  color: #fff !important;
+}
+
+.text-mobile-card-right{
+  font-size:15px;
+}
+
+.text-digital{
+  font-family: 'DS-Digital', arial !important;
+  font-size: 32px;
+}
+
+.authentication-bg {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-bottom: 0; }
+
+  .authentication-bg-pattern {
+    background-image: url("../images/bg-pattern.png");
+    background-color: #343b4a  }
+
+    .card-box-table{
+      background-color: #323a46  !important;
+    }
+
+    .card-box-dados{
+      background-color: #65709c  !important;
+      color: #fff !important;
+    }
+
+    .table tbody + tbody {
+      border-top: 0px solid #dee2e6 !important;
+    }
+
+    .card-cron-red{
+      -webkit-animation-name: card-cron-red; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+      animation-name: card-cron-red;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+
+    }
+
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes card-cron-red {
+      0%   {color:#EE3439;}
+      50%  {color:#000;}
+      100%  {color:#EE3439;}
+    }
+
+    /* Standard syntax */
+    @keyframes card-cron-red {
+      0%   {color:#EE3439;}
+      50%  {color:#000;}
+      100%  {color:#EE3439;}
+    }
+
+    .card-wp2 {
+      background: #0A0919 !important;
+
+    }
+
+    .card-cron-green{
+      -webkit-animation-name: card-cron-green; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+      animation-name: card-cron-green;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+
+    }
+
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes card-cron-green {
+      0%   {color:#24EB14 !important;}
+      50%  {color:#000;}
+      100%  {color:#24EB14;}
+    }
+
+    /* Standard syntax */
+    @keyframes card-cron-green {
+      0%   {color:#24EB14;}
+      50%  {color:#000;}
+      100%  {color:#24EB14;}
+    }
+
+    @media (max-width: 575px)
+    {
+      .hidden-xs-down, .hidden-sm-down, .hidden-md-down, .hidden-lg-down, .hidden-xl-down,
+      .hidden-xs-up,
+      .hidden-unless-sm, .hidden-unless-md, .hidden-unless-lg, .hidden-unless-xl
+      {
+        display: none !important;
+      }
+
+      .text-mobile-card{ font-size:25px !important;}
+      .text-table-mobile{ font-size: 13px !important;}
+
+    }
+
+    @media (min-width: 1200px) {
+
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+
+    }
+
+    @media (max-width: 767px) {
+
+    }

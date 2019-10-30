@@ -1,0 +1,100 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                  <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li>
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              SOLICITAR SAQUE
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              SOLICITAR SAQUE
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <div class="row">
+                <div class="col-md-12" ng-init="listarPagamentosDisponivel()">
+                  <div class="form-group" >
+                    <label>SALDO DISPONÍVEL: </label>
+                    <input class="form-control" ng-repeat="pg in pgDisponivel" ng-repeat="pg in pgDisponivel" ng-model="pg.valor_dolar" disabled/>
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
+                  </div>
+                </div>
+                <div class="col-md-12" >
+                  <div class="form-group" >
+                    <label>TAXA DE SAQUE: </label>
+                    <p style="font-size:16px;">3%</p>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group" ng-init="listarCarteiraUsuario()">
+                    <div class="card">
+                      <label>Carteira Bitcoin (24 horas*)</label>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ng-repeat="c in carteiraUsuario" style="font-size: 16px;">
+                          <i class="fab fa-bitcoin" style="color: orange"></i> {{c.bitcoin}}
+                          <span class="text-danger animated fadeIn" ng-if="c.bitcoin.length <= 0">Você não possui carteira Bitcoin cadastrada.</span>
+                        </li>
+                      </ul>
+                      <br>
+                      <label>Conta bancária (5 dias úteis*)</label>
+
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item" ng-repeat="c in carteiraUsuario" style="font-size: 16px;">
+                         BANCO: {{c.banco}}
+                        </li>
+                        <li class="list-group-item" ng-repeat="c in carteiraUsuario" style="font-size: 16px;">
+                         AGENCIA: {{c.agencia}}
+                        </li>
+                        <li class="list-group-item" ng-repeat="c in carteiraUsuario" style="font-size: 16px;">
+                         CONTA: {{c.conta}}
+                        </li>
+                        <span class="text-danger animated fadeIn" ng-if="c.bitcoin.length <= 0">Você não possui carteira Bitcoin cadastrada.</span>
+                      </ul>
+
+                      <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorCarteira" ng-bind-html="errorCarteira"></span>
+                    </div>
+
+                    <p>Não esqueça de manter os dados da sua carteira sempre atualizado. Se preferir, atualize aqui:
+                      <a ng-href="#/conta" class="btn btn-primary rounded btn-xs"><i class="fas fa-retweet"></i> ATUALIZAR</a></p>
+                    </div>
+                    <p>*  Prazo de pagamento</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-primary" ng-click="solicitarSaque()">SOLICITAR SAQUE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        </div>
+        <div class="modal-body">
+          <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+          <h3 style="font-size:20px; color: #575757;" ng-show="messageSuccesso" ng-bind-html="messageSuccesso"></h3>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,133 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                  <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li>
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              CONTA
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" style="background:#4d5668; color: #fff;">
+            CONTA
+          </div>
+          <div class="card-block" style="padding:15px;">
+            <h4 class="card-title">Meus dados</h4>
+            <p class="card-text"><b>NOME:</b> {{usuario.nome}}</p>
+            <p class="card-text"><b>EMAIL:</b> {{usuario.email}}</p>
+            <p class="card-text"><b>PLANO:</b> {{usuario.plano_valor}}</p>
+            <p class="card-text"><b>CPF:</b> {{usuario.cpf}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header" style="background:#4d5668; color: #fff;">
+            CARTEIRAS
+          </div>
+          <div class="card-block" style="padding:15px;">
+            <h4 class="card-title">CONTA BANCÁRIA:</h4>
+            <p class="text-danger">A conta bancária, deve ter o mesmo CPF do titular da conta da plataforma</p>
+            <div class="row">
+
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>BANCO: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.banco">
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorBanco" ng-bind-html="errorBanco"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>AGÊNCIA: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.agencia">
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorAgencia" ng-bind-html="errorAgencia"></span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>CONTA: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.conta">
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorConta" ng-bind-html="errorConta"></span>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>FAVORECIDO: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.nome" disabled>
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorConta" ng-bind-html="errorConta"></span>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>CPF: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.cpf" disabled>
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorConta" ng-bind-html="errorConta"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+           <!-- <div class="card-block" style="padding:15px;">
+            <h4 class="card-title">URPAY:</h4>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>USUÁRIO URPAY @: </label>
+                  <input type="text" class="form-control" placeholder="Digite o campo indicado" ng-model="carteira.urpay">
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorUrpay" ng-bind-html="errorUrpay"></span>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="card-block" style="padding:15px;">
+            <h4 class="card-title">BITCOIN:</h4>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>CARTEIRA BITCOIN: </label>
+                    <i class="fab fa-bitcoin" style="color: orange"></i>
+                  <input type="text" class="form-control"placeholder="Digite o campo indicado" ng-model="carteira.bitcoin">
+                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorBitcoin" ng-bind-html="errorBitcoin"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" ng-click="atualizarCarteira()">ATUALIZAR CARTEIRA</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="messageSuccesso" ng-bind-html="messageSuccesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

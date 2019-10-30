@@ -1,0 +1,88 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              SAQUES
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-box card-box-table" ng-init="listarSaques()">
+            <div class="card">
+
+              <div class="card-header" style="background:#4d5668; color: #fff;">
+                SAQUES
+              </div>
+              <div class="table-responsive">
+                <table class="table table-dark mb-0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>CARTEIRA</th>
+                      <th>USUARIO</th>
+                      <th>STATUS</th>
+                      <th>DATA SOLICITAÇÃO</th>
+                      <th>AÇÃO</th>
+                    </tr>
+                  </thead>
+                  <tbody style="color: #FFF;" dir-paginate="s in saque | itemsPerPage: 10">
+                    <tr >
+                      <td ng-bind-html="s.id"></td>
+                      <td ng-bind-html="s.carteira"></td>
+                      <td ng-bind-html="s.nome"></td>
+                      <td ng-if="s.status == 'PENDENTE'"><span class="badge badge-danger">PENDENTE</span></td>
+                      <td ng-if="s.status == 'PAGO'"><span class="badge badge-success">PAGO</span></td>
+                      <td>{{s.data_solicitacao}}</td>
+                      <td>
+                        <a ng-if="s.status == 'PENDENTE'" ng-href="#/saque/{{s.id}}" class="btn btn-primary btn-sm"> PAGAR </a>
+                        <a ng-if="s.status == 'PAGO'" ng-href="#/saque/{{s.id}}" class="btn btn-success btn-sm"> COMPROVANTE </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <span class="text-info" ng-if="usuarios.length <= 0"> Não foi encontrado nenhum registro.</span>
+            </div>
+            <div>
+              <span class="text-default" ng-if="usuarios.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
+            </div>
+            <div >
+              <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="view/dirPagination.tpl.html"></dir-pagination-controls>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

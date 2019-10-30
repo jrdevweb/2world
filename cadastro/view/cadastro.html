@@ -1,0 +1,106 @@
+
+
+
+<div ng-controller="particlesCtrl">
+<div particles-drv ng-show="showParticles">
+
+</div>
+</div>
+
+<div class="authentication-bg authentication-bg-pattern d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card card-black card-login">
+          <div class="card-body p-4">
+            <div class="text-center">
+              <span><img src="assets/images/logo-wp2.png" alt="" height="50"></span>
+            </div>
+            <form name="form" class="pt-2">
+              <a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a>
+              <div class="form-group mb-3" ng-if="dadosIndicador.length > 0">
+                <p>Indicação: </p>
+                <input class="form-control" type="text" placeholder="WP2" value="{{cadastro.nome}}" disabled>
+                <input class="form-control" style="display:none;" type="text" ng-model="cadastro.id" disabled>
+              </div>
+
+              <div class="form-group mb-3">
+                <label>Nome completo</label>
+                <input class="form-control" type="text" placeholder="Digite seu nome" ng-model="cadastro.nomeCadastro">
+                <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorNome" ng-bind-html="errorNome"></span>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label>Data de nascimento</label>
+                    <input class="form-control" type="text" placeholder="Digite sua data de nascimento" ng-model="cadastro.data_nascimento" mask="99/99/9999">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDataNascimento" ng-bind-html="errorDataNascimento"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group mb-3">
+                    <label>Documento </label>
+                    <input class="form-control" type="text" placeholder="Digite seu documento" ng-model="cadastro.cpf" mask="999.999.999-99">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorCPF" ng-bind-html="errorCPF"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group mb-3">
+                    <label>Email</label>
+                    <input class="form-control" type="email" placeholder="Digite seu Email" ng-model="cadastro.email">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorEmail" ng-bind-html="errorEmail"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-5">
+                  <div class="form-group mb-3">
+                    <label>Senha</label>
+                    <input class="form-control" type="password" placeholder="Digite sua senha" ng-model="cadastro.senha">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorSenha" ng-bind-html="errorSenha"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-0 text-left">
+                <p class="text-muted" style="font-size:14px; color: #fff;">Ao cadastrar-me, declaro que sou maior de idade e aceito as Políticas de privacidade e os Termos e condições da WP2.</p>
+              </div>
+
+              <div class="form-group mb-0 text-center">
+                <button class="btn btn-success btn-block" ng-click="criarConta()"> CRIAR CONTA AGORA </button>
+              </div>
+            </form>
+            <span style="text-align:center !important; font-size:15px; font-weight: 500;" class="text-danger"></span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+
+        <div class="align-items-center">
+          <a target="_blank" href="http://wp2.ntxme.com/app/" class="btn btn-primary btn-block" >IR PARA LOGIN</a>
+          <!-- <a target="_blank" href="http://localhost/RoboCryptoTrader/app/" class="btn btn-primary btn-block" >IR PARA LOGIN</a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

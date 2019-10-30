@@ -1,0 +1,38 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              <button class="btn btn-success btn-sm" ng-if="usuario.robo_ligado == 'SIM'">ROBÔ LIGADO</button>
+              <button class="btn btn-danger btn-sm" ng-if="usuario.robo_ligado == 'NAO'">ROBÔ DESLIGADO</button>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class=" card-box card-box-table">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              CONTA
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <h4 class="card-title">Meus dados</h4>
+              <p class="card-text"><b>NOME:</b> {{usuario.nome}}</p>
+              <p class="card-text"><b>EMAIL:</b> {{usuario.email}}</p>
+              <p class="card-text"><b>PLANO:</b> {{usuario.plano_valor}}</p>
+              <p class="card-text"><b>CPF:</b> {{usuario.cpf}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

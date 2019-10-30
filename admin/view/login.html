@@ -1,0 +1,53 @@
+<div ng-controller="particlesCtrl">
+  <div particles-drv ng-show="showParticles">
+
+  </div>
+</div>
+
+<div class="authentication-bg authentication-bg-pattern d-flex align-items-center">
+  <div class="home-btn d-none d-sm-block">
+    <a ><i class="fas fa-home h2 text-white"></i></a>
+  </div>
+
+  <div class="account-pages w-100 mt-5 mb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+          <div class="card card-black card-login">
+            <div class="card-body p-4">
+              <div class="text-center mb-4">
+                <span><img src="assets/images/logo_azul.png" alt="" height="120"></span>
+              </div>
+              <label class="form-login">LOGIN DO ADMINSTRADOR</label>
+              <form name="form" class="pt-2">
+                <div class="form-group mb-3">
+                  <label class="form-login">Email</label>
+                  <input class="form-control" type="email" id="emailaddress" required="" placeholder="Digite seu Email" required ng-model="user.email">
+                </div>
+
+                <!-- CRIAR 'ESQUECEU SUA SENHA' AQUI -->
+
+                <div class="form-group mb-3">
+                  <!-- <a class="text-muted float-right"><small>Esqueceu a senha?</small></a> -->
+                  <label class="form-login">Senha</label>
+                  <input class="form-control" type="password" required="" id="password" placeholder="Digite sua senha" required ng-model="user.senha">
+                </div>
+
+                <div class="custom-control custom-checkbox mb-3">
+                  <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                  <label class="custom-control-label" class="form-login">Lembrar de mim</label>
+                </div>
+
+                <div class="form-group mb-0 text-center">
+                  <button class="btn btn-primary btn-block"  ng-disabled="form.$invalid" ng-click="login(user)"> {{btnLogin}} </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <span style="text-align:center !important; font-size:15px; font-weight: 500;" class="text-danger">{{msgtxt}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

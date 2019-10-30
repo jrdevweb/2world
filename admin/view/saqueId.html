@@ -1,0 +1,87 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              DADOS DO SAQUE
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              DADOS DO SAQUE
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <div class="row">
+                <div class="col-md-12" ng-init="listarPagamentosDisponivel()">
+                  <div class="form-group" ng-if="dadossaque.status == 'PENDENTE'">
+                    <label>SALDO DISPONÍVEL: </label>
+                    <input class="form-control" ng-repeat="pg in pgDisponivel" ng-repeat="pg in pgDisponivel" ng-model="pg.valor_dolar" disabled/>
+                  </div>
+
+                  <div class="form-group">
+                    <label>USUÁRIO: </label>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">Nome: {{dadossaque.nome}}</li>
+                      <li class="list-group-item">CPF: {{dadossaque.cpf}}</li>
+                    </ul>
+                  </div>
+
+                  <div class="form-group">
+                    <label>DADOS DA CARTEIRA PARA PAGAMENTO</label>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">  <i class="fab fa-bitcoin" style="color: orange"></i> {{dadossaque.bitcoin}}</li>
+                    </ul>
+                  </div>
+
+                  <div class="form-group" >
+                    <label>STATUS: </label>
+                    <p class="text-danger" ng-if="dadossaque.status == 'PENDENTE'"><span class="badge badge-danger">PENDENTE</span></p>
+                    <p class="text-success" ng-if="dadossaque.status == 'PAGO'"><span class="badge badge-success">PAGO</span></p>
+                  </div>
+
+                  <div class="form-group">
+                    <label>HASH (ASSINATURA): </label>
+                    <input ng-disabled="dadossaque.status == 'PAGO'" type="text" class="form-control" ng-model="dadossaque.hash_bitcoin" placeholder="Digite ou cole aqui o HASH (Assinatura) da transação">
+                    <br>
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorHash" ng-bind-html="errorHash"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" ng-click="fazerPagamentoSaque()" ng-if="dadossaque.status == 'PENDENTE'">FAZER PAGAMENTO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

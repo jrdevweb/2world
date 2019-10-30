@@ -1,0 +1,51 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+            SUPORTE
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class=" card-box card-box-table">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              SUPORTE
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>ASSUNTO: </label>
+                    <input type="text" class="form-control" placeholder="Digite o assunto da mensagem" ng-model="plano.descricao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>MENSAGEM: </label>
+                    <textarea class="form-control" placeholder="Digite a mensagem" rows="8" cols="80"></textarea>
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValor" ng-bind-html="errorValor"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" ng-click="cadastrarPlano()">Enviar Mensagem</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

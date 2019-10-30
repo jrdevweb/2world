@@ -1,0 +1,75 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              ROBO CHECKOUT
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h3 class="text-white">ROBÔ</h3>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header card-gradient" style="text-align:center; font-size:20px;">
+                {{robocheckout.descricao}}
+              </div>
+              <div class="card-block" style="padding:10px; text-align:left;">
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Usuário: {{robocheckout.nome}}</li>
+                    <li class="list-group-item">Valor: $ {{robocheckout.valor}}</li>
+                    <li class="list-group-item" ng-if="robocheckout.status == 'PENDENTE'">Status de pagamento: <b class="text-danger">{{robocheckout.status}}</b></li>
+                    <li class="list-group-item" ng-if="robocheckout.status == 'PAGO'">Status de pagamento: <b class="text-success">{{robocheckout.status}}</b></li>
+                    <li class="list-group-item">Data: {{robocheckout.data_compra}}</li>
+                    <li class="list-group-item">Diário: {{robocheckout.porcentagem_ganho}}%</li>
+                  </ul>
+                  <ul class="list-group list-group-flush">
+                    <h3 style="font-size:20px;">Comprovante</h3>
+                    <li class="list-group-item" ng-if="robocheckout.comprovante !== null">
+                      <a ng-href="../receipt/{{robocheckout.comprovante}}" target="_blank"><i class="fas fa-file-alt"></i> Link do comprovante</a>
+                    </li>
+                    <li class="list-group-item" ng-if="robocheckout.comprovante == null">
+                      Não existe comprovante anexado.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <p class="text-danger">Lembre-se de validar o comprovante antes de aprovar o cadastro.</p>
+                <button class="btn btn-primary" name="button" ng-click="aprovarCadastro()">APROVAR COMPRA</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Sucesso</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

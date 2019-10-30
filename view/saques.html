@@ -1,0 +1,61 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                  <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li>
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              SAQUES
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class=" card-box card-box-table">
+          <a class="btn btn-primary" ng-href="#/solicitar-saque" style="margin-bottom:20px;"name="button">SOLICITAR SAQUE</a>
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              SAQUES
+            </div>
+            <div class="table-responsive">
+              <table class="table table-dark mb-0" ng-init="listarSaques()">
+                <thead>
+                  <tr>
+                    <th class="visible-xs-down">ID</th>
+                    <th>CARTEIRA</th>
+                    <th>STATUS</th>
+                    <th>DATA SOLICITACÃO</th>
+                  </tr>
+                </thead>
+                <tbody style="color: #FFF;" dir-paginate="s in saque | itemsPerPage: 10">
+                  <tr >
+                      <td ng-bind-html="s.id"></td>
+                      <td ng-bind-html="s.carteira"></td>
+                      <td ng-bind-html="s.status"></td>
+                      <td ng-bind-html="s.data_solicitacao"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <span class="text-info" ng-if="saque.length <= 0"> Não foi encontrado nenhum registro.</span>
+          </div>
+          <div>
+            <span class="text-default" ng-if="saque.length > 0"> Total de registros: <b>{{saque.length}}</b></span>
+          </div>
+          <div >
+            <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="view/dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

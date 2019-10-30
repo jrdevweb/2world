@@ -1,0 +1,64 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                  <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li>
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              APLICAÇÕES CHECKOUT
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12" ng-init="listarRoboCheckout()">
+        <h3 class="text-white">APLICAÇÕES ({{roboList.length}})</h3>
+        <div class="row">
+          <div class="col-md-4" ng-repeat="r in roboList">
+            <div class="card">
+              <div class="card-header card-gradient" style="text-align:center; font-size:20px;">
+                <img ng-src="./assets/images/acoes/{{r.imagem_acao}}" style="height: 150px;" >
+              </div>
+              <div class="card-block" style="padding:10px; text-align:left;">
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Valor: $ {{r.valor}}</li>
+                    <li class="list-group-item" ng-if="r.status == 'PENDENTE'">Status de pagamento: <b class="text-danger">{{r.status}}</b></li>
+                    <li class="list-group-item" ng-if="r.status == 'PAGO'">Status de pagamento: <b class="text-success">{{r.status}}</b></li>
+                    <li class="list-group-item">Data: {{r.data_compra}}</li>
+                    <li class="list-group-item">Diário: {{r.porcentagem_ganho}}%</li>
+                  </ul>
+                </div>
+                <a ng-if="r.status == 'PENDENTE'" ng-href="#/aplicacoes/{{r.id}}" class="btn btn-primary" name="button">VER</a>
+                <a ng-if="r.status == 'PAGO'"ng-href="#/aplicacoes/{{r.id}}" class="btn btn-success" name="button">COMPROVANTE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="messagemSuccesso" ng-bind-html="messagemSuccesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

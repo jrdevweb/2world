@@ -1,0 +1,51 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              <button class="btn btn-success btn-sm" ng-if="usuario.robo_ligado == 'SIM'">ROBÔ LIGADO</button>
+              <button class="btn btn-danger btn-sm" ng-if="usuario.robo_ligado == 'NAO'">ROBÔ DESLIGADO</button>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class=" card-box card-box-table">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              RELATORIO
+            </div>
+            <div class="table-responsive">
+              <table class="table table-dark mb-0">
+                <thead>
+                  <tr>
+                    <th class="visible-xs-down">ID</th>
+                    <th>VALOR</th>
+                    <th></th>
+                    <th></th>
+                    <th>OPERAÇÂO</th>
+                    <th>DATA OPERAÇÃO</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody style="color: #FFF;" ng-repeat="o in operacoes">
+                  <tr >
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <h3 style="font-size:16px; color: #fff; text-align:center;" >Não foi contrado nenhum registro</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
