@@ -1,20 +1,21 @@
 <?php
 $data = json_decode(file_get_contents("php://input"));
 require 'conectar.php';
+$output = array();
 $ID_USUARIO = mysqli_real_escape_string($connect, $data->id);
-$sql = "SELECT * FROM usuario WHERE id = '$ID_USUARIO'";
+$query = "SELECT * FROM usuario WHERE id = '$ID_USUARIO'";
 
-$result = $connect->query($sql);
-if ($result->num_rows > 0) {
+$result = mysqli_query($connect, $query);
 
-  $data = array() ;
-  while($row = $result->fetch_assoc()) {
-    $data[] = $row;
+if(mysqli_num_rows($result) > 0)
+{
+  while($row = mysqli_fetch_array($result))
+  {
+    $output[] = $row;
   }
-} else {
-  echo "Base de dados não contém registros.";
+  echo json_encode($output);
 }
-echo json_encode($data);
+
 session_start();
 $_SESSION['id_usuario'] = $ID_USUARIO;
 
