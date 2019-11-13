@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="col-md-12">
-        <a class="btn btn-primary" ng-href="#/novo-usuario" style="margin-bottom:20px;"name="button">ADICIONAR USUÁRIO</a>
+        <a class="btn btn-primary" ng-href="#/novo-usuario" style="margin-bottom:20px;"name="button">CADASTRAR USUÁRIO</a>
         <div class=" card-box card-box-table" ng-init="listarUsuarios()">
           <div class="card">
             <div class="card-header" style="background:#4d5668; color: #fff;">
@@ -43,7 +43,7 @@
                     <td ng-bind-html="u.email"></td>
                     <td ng-bind-html="u.plano_valor"></td>
                     <td>
-                      <a ng-href="#/usuario/{{u.id}}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                      <a ng-href="#/usuario/{{u.id}}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> EDITAR</a>
                     </td>
                   </tr>
                 </tbody>

@@ -11,7 +11,7 @@
               </ol>
             </div>
             <h4 class="page-title">
-              DADOS APLICAÇÃO
+              DADOS PLANO
             </h4>
           </div>
         </div>
@@ -20,17 +20,11 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header" style="background:#4d5668; color: #fff;">
-              DADOS DA APLICAÇÃO
+              DADOS DO PLANO
             </div>
             <div class="card-block" style="padding:15px;">
               <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group" >
-                    <label>LOGO: </label>
-                    <br>
-                    <img ng-src="../assets/images/acoes/{{dadosplano.imagem_acao}}" style="height:70px;">
-                  </div>
-                </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>DESCRIÇÃO: </label>
@@ -38,84 +32,52 @@
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>VALOR USD: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor em USD" ng-model="dadosplano.valor">
+                    <label>RENTABILIDADE (MESES): </label>
+                    <input type="text" class="form-control" placeholder="Digite quantos meses terá a rentabilidade" ng-model="dadosplano.meses_rentabilidade">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorMesesRentabilidade" ng-bind-html="errorMesesRentabilidade"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR PLANO (U$):  </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor" ng-model="dadosplano.valor_plano">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValor" ng-bind-html="errorValor"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>GANHO DIÁRIO (%): </label>
-                    <input type="text" class="form-control" placeholder="Digite a porcentagem ganho" ng-model="dadosplano.porcentagem_ganho">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorGanho" ng-bind-html="errorGanho"></span>
+                    <label>DIÁRIO (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem ganho diário" ng-model="dadosplano.porcentagem_diario">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPorcentagemDiario" ng-bind-html="errorPorcentagemDiario"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>PERCA (%): </label>
-                    <input type="text" class="form-control" placeholder="Digite a porcentagem perca" ng-model="dadosplano.porcentagem_perca">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPerca" ng-bind-html="errorPerca"></span>
+                    <label>TOTAL (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem total de ganho" ng-model="dadosplano.porcentagem_total">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPorcentagemTotal" ng-bind-html="errorPorcentagemTotal"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>LIMITE MÁXIMO INVESTIMENTOS: </label>
-                    <input type="text" class="form-control" placeholder="Digite o limite máximo de investimentos" ng-model="dadosplano.limite_maximo">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorLimiteMaximo" ng-bind-html="errorLimiteMaximo"></span>
+                    <label>NIVEIS INDICAÇÃO:  </label>
+                    <input type="text" class="form-control" placeholder="Digite a quantidade de níveis de indicação" ng-model="dadosplano.nivel_indicacao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorNivelIndicacao" ng-bind-html="errorNivelIndicacao"></span>
                   </div>
                 </div>
-                <!-- <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>LIMITE MÁXIMO POTENCIALIZAR: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor máximo que poderá ser potencializado" ng-model="dadosplano.potencializar">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPotencializar" ng-bind-html="errorPotencializar"></span>
-                  </div>
-                </div> -->
+
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>TAXA SAQUE (%): </label>
                     <input type="text" class="form-control" placeholder="Digite a taxa de saque" ng-model="dadosplano.taxa_saque">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorTaxaSaque" ng-bind-html="errorTaxaSaque"></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>VALOR MÍNIMO SAQUE: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor mínimo de saque" ng-model="dadosplano.valor_minimo_saque">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorMinSaque" ng-bind-html="errorValorMinSaque"></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>VALOR APLICAÇÃO: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor da ação" ng-model="dadosplano.valor_acao">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorAplicacao" ng-bind-html="errorValorAplicacao"></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">SUBIR/DESCER</label>
-                    <select class="form-control" ng-model="dadosplano.subir_descer">
-                      <option value="">Escolha uma opção</option>
-                      <option value="SUBIR">SUBIR</option>
-                      <option value="DESCER">DESCER</option>
-                    </select>
-                  </div>
-                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorSubirDescer" ng-bind-html="errorSubirDescer"></span>
-                </div>
-                <div class="col-md-12">
-                  <div class="row" ng-controller="uploadCtrl">
-                    <div class="col-md-12" style="margin-top:5px;">
-                      <input type="file" style="border:0px;" class="btn btn-primary btn-sm btn-block" file-input="files"/>
-                    </div>
-                    <div class="col-md-12" style="margin-top:10px; ">
-                      <span class="text-secondary" style="font-size:12px; font-weight:bold;" ng-bind-html="errorComprovante"></span>
-                    </div>
-                    <div class="col-md-12" style="margin-bottom:10px;">
-                      <button ng-click="carregarImgComprovante(dadosplano.id)" class="btn btn-primary btn-sm">Enviar Comprovante</button>
-                    </div>
                   </div>
                 </div>
               </div>

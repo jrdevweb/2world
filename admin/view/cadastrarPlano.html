@@ -11,7 +11,7 @@
               </ol>
             </div>
             <h4 class="page-title">
-              CADASTRO DE APLICAÇÃO
+              CADASTRO DE PLANO
             </h4>
           </div>
         </div>
@@ -20,52 +20,59 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header" style="background:#4d5668; color: #fff;">
-              CADASTRO DE APLICAÇÃO
+              CADASTRO DE PLANO
             </div>
             <div class="card-block" style="padding:15px;">
               <div class="row">
+
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>DESCRIÇÃO: </label>
-                    <input type="text" class="form-control" placeholder="Digite a descrição da ação" ng-model="plano.descricao">
+                    <input type="text" class="form-control" placeholder="Digite a descrição do plano" ng-model="plano.descricao">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>VALOR: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor em USD" ng-model="plano.valor">
+                    <label>RENTABILIDADE (MESES): </label>
+                    <input type="text" class="form-control" placeholder="Digite quantos meses terá a rentabilidade" ng-model="plano.meses_rentabilidade">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorMesesRentabilidade" ng-bind-html="errorMesesRentabilidade"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR PLANO (U$):  </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor" ng-model="plano.valor_plano">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValor" ng-bind-html="errorValor"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>GANHO DIÁRIO (%): </label>
-                    <input type="text" class="form-control" placeholder="Digite a porcentagem ganho" ng-model="plano.ganho">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorGanho" ng-bind-html="errorGanho"></span>
+                    <label>DIÁRIO (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem ganho diário" ng-model="plano.porcentagem_diario">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPorcentagemDiario" ng-bind-html="errorPorcentagemDiario"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>PERCA (%): </label>
-                    <input type="text" class="form-control" placeholder="Digite a porcentagem perca" ng-model="plano.perca">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPerca" ng-bind-html="errorPerca"></span>
+                    <label>TOTAL (%): </label>
+                    <input type="text" class="form-control" placeholder="Digite a porcentagem total de ganho" ng-model="plano.porcentagem_total">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorPorcentagemTotal" ng-bind-html="errorPorcentagemTotal"></span>
                   </div>
                 </div>
+
                 <div class="col-md-6">
                   <div class="form-group" >
-                    <label>LIMITE MÁXIMO INVESTIMENTOS: </label>
-                    <input type="text" class="form-control" placeholder="Digite o limite máximo de investimentos" ng-model="plano.limite_maximo">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorLimiteMaximo" ng-bind-html="errorLimiteMaximo"></span>
+                    <label>NIVEIS INDICAÇÃO:  </label>
+                    <input type="text" class="form-control" placeholder="Digite a quantidade de níveis de indicação" ng-model="plano.nivel_indicacao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorNivelIndicacao" ng-bind-html="errorNivelIndicacao"></span>
                   </div>
                 </div>
-                <!-- <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>ATIVAÇÃO SOFTWARE: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor da ativação do software" ng-model="plano.ativacao_software">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorAtivacaoSoftware" ng-bind-html="errorAtivacaoSoftware"></span>
-                  </div>
-                </div> -->
+
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>TAXA SAQUE (%): </label>
@@ -73,31 +80,7 @@
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorTaxaSaque" ng-bind-html="errorTaxaSaque"></span>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>VALOR MÍNIMO SAQUE: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor mínimo de saque" ng-model="plano.valor_minimo_saque">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorMinSaque" ng-bind-html="errorValorMinSaque"></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group" >
-                    <label>VALOR APLICAÇÃO: </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor da ação" ng-model="plano.valor_acao">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorAplicacao" ng-bind-html="errorValorAplicacao"></span>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleSelect1">SUBIR/DESCER</label>
-                    <select class="form-control" ng-model="plano.subir_descer">
-                      <option value="">Escolha uma opção</option>
-                      <option value="SUBIR">SUBIR</option>
-                      <option value="DESCER">DESCER</option>
-                    </select>
-                  </div>
-                  <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorSubirDescer" ng-bind-html="errorSubirDescer"></span>
-                </div>
+
               </div>
             </div>
             <div class="card-footer">

@@ -12,49 +12,29 @@ if(empty($inputs->descricao))
   $error["descricao"] = "A descrição é obrigatório *";
 }
 
-if(empty($inputs->valor))
+if(empty($inputs->meses_rentabilidade))
 {
-  $error["valor"] = "O valor é obrigatório *";
+  $error["meses_rentabilidade"] = "A descrição de meses de rentabilidade é obrigatório *";
 }
 
-if(empty($inputs->porcentagem_ganho))
+if(empty($inputs->valor_plano))
 {
-  $error["porcentagem_ganho"] = "A porcentagem de ganho é obrigatório *";
+  $error["valor_plano"] = "O valor é obrigatório *";
 }
 
-if(empty($inputs->porcentagem_perca))
+if(empty($inputs->porcentagem_diario))
 {
-  $error["porcentagem_perca"] = "A porcentagem de perca é obrigatório *";
+  $error["porcentagem_diario"] = "A porcentagem de ganho diário é obrigatório *";
 }
 
-if(empty($inputs->limite_maximo))
+if(empty($inputs->porcentagem_total))
 {
-  $error["limite_maximo"] = "O Limite máximo investimento é obrigatório *";
-}
-
-if(empty($inputs->potencializar))
-{
-  $error["potencializar"] = "O limite a potencializar é obrigatório *";
+  $error["porcentagem_total"] = "A porcentagem de ganho total é obrigatório *";
 }
 
 if(empty($inputs->taxa_saque))
 {
   $error["taxa_saque"] = "A taxa de saque é obrigatório *";
-}
-
-if(empty($inputs->valor_minimo_saque))
-{
-  $error["valor_minimo_saque"] = "O valor mínimo de saque é obrigatório *";
-}
-
-if(empty($inputs->valor_acao))
-{
-  $error["valor_acao"] = "O valor da aplicação é obrigatório *";
-}
-
-if(empty($inputs->subir_descer))
-{
-  $error["subir_descer"] = "O opção das setas é obrigatório *";
 }
 
 if(!empty($error))
@@ -64,18 +44,15 @@ if(!empty($error))
 else
 {
   $descricao = mysqli_real_escape_string($connect, $inputs->descricao);
-  $valor = mysqli_real_escape_string($connect, $inputs->valor);
-  $ganho = mysqli_real_escape_string($connect, $inputs->porcentagem_ganho);
-  $perca = mysqli_real_escape_string($connect, $inputs->porcentagem_perca);
-  $limite_maximo = mysqli_real_escape_string($connect, $inputs->limite_maximo);
-  $potencializar = mysqli_real_escape_string($connect, $inputs->potencializar);
+  $meses_rentabilidade = mysqli_real_escape_string($connect, $inputs->meses_rentabilidade);
+  $valor_plano = mysqli_real_escape_string($connect, $inputs->valor_plano);
+  $porcentagem_diario = mysqli_real_escape_string($connect, $inputs->porcentagem_diario);
+  $porcentagem_total = mysqli_real_escape_string($connect, $inputs->porcentagem_total);
+  $nivel_indicacao = mysqli_real_escape_string($connect, $inputs->nivel_indicacao);
   $taxa_saque = mysqli_real_escape_string($connect, $inputs->taxa_saque);
-  $valor_minimo_saque = mysqli_real_escape_string($connect, $inputs->valor_minimo_saque);
-  $valor_acao = mysqli_real_escape_string($connect, $inputs->valor_acao);
-  $subir_descer = mysqli_real_escape_string($connect, $inputs->subir_descer);
 
-  $query = "UPDATE planos set descricao = '$descricao', valor = '$valor', porcentagem_ganho = '$ganho', porcentagem_perca = '$perca',
-   limite_maximo = '$limite_maximo', potencializar = '$potencializar', taxa_saque = '$taxa_saque', valor_minimo_saque = '$valor_minimo_saque', valor_acao = '$valor_acao', subir_descer = '$subir_descer' WHERE id = '$ID_PLANO'";
+  $query = "UPDATE planos set descricao = '$descricao', meses_rentabilidade = '$meses_rentabilidade', valor_plano = '$valor_plano',
+  porcentagem_diario = '$porcentagem_diario', porcentagem_total = '$porcentagem_total', nivel_indicacao = '$nivel_indicacao', taxa_saque = '$taxa_saque' WHERE id = '$ID_PLANO'";
   if(mysqli_query($connect, $query))
   {
     $data["message"] = "O cadastro do plano foi atualizado com sucesso!";

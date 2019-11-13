@@ -113,6 +113,19 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   };
 
+  $scope.listarPlanosComprados = function(){
+    $scope.planoscomprados = [];
+    $http({
+      method : 'GET',
+      url : 'api/planosComprados.php',
+    }).then(function(response) {
+      $scope.planoscomprados = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
   $scope.fazerPagamentoSaque = function(){
     $http({
       method: 'POST',
@@ -241,29 +254,23 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }).success(function(data){
       if(data.error) {
         $scope.errorDescricao = data.error.descricao;
-        $scope.errorValor = data.error.valor;
-        $scope.errorGanho = data.error.ganho;
-        $scope.errorPerca = data.error.perca;
-        $scope.errorLimiteMaximo = data.error.limite_maximo;
-        $scope.errorPotencializar = data.error.potencializar;
+        $scope.errorMesesRentabilidade = data.error.meses_rentabilidade;
+        $scope.errorValor = data.error.valor_plano;
+        $scope.errorPorcentagemDiario = data.error.porcentagem_diario;
+        $scope.errorPorcentagemTotal = data.error.porcentagem_total;
+        $scope.errorNivelIndicacao = data.error.nivel_indicacao;
         $scope.errorTaxaSaque = data.error.taxa_saque;
-        $scope.errorValorMinSaque = data.error.valor_minimo_saque;
-        $scope.errorValorAplicacao = data.error.valor_acao;
-        $scope.errorSubirDescer = data.error.subir_descer;
         $scope.mensagemSucesso = null;
         console.log(data);
       } else {
         $scope.plano = null;
         $scope.errorDescricao = null;
+        $scope.errorMesesRentabilidade = null;
         $scope.errorValor = null;
-        $scope.errorGanho = null;
-        $scope.errorPerca = null;
-        $scope.errorLimiteMaximo = null;
-        $scope.errorPotencializar = null;
+        $scope.errorPorcentagemDiario = null;
+        $scope.errorPorcentagemTotal = null;
+        $scope.errorNivelIndicacao = null;
         $scope.errorTaxaSaque = null;
-        $scope.errorValorMinSaque = null;
-        $scope.errorValorAplicacao = null;
-        $scope.errorSubirDescer = null;
         $("#modal").modal('show');
         $scope.mensagemSucesso = data.message;
         console.log(data);
@@ -330,7 +337,6 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
         $scope.errorCPF = data.error.cpf;
         $scope.errorDataNascimento = data.error.data_nascimento;
         $scope.errorAtivo = data.error.ativo;
-        $scope.errorRobo = data.error.robo_ligado;
         $scope.errorPlano = data.error.plano;
         $scope.errorSenha = data.error.senha;
         $scope.mensagemSucesso = null;
@@ -342,7 +348,6 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
         $scope.errorCPF = null;
         $scope.errorDataNascimento = null;
         $scope.errorAtivo = null;
-        $scope.errorRobo = null;
         $scope.errorPlano = null;
         $scope.errorSenha = null;
         $("#modal").modal('show');
@@ -360,8 +365,10 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }).success(function(data){
       if(data.error) {
         $scope.errorNome = data.error.nome;
+        $scope.errorEmail = data.error.email;
+        $scope.errorCPF = data.error.cpf;
+        $scope.errorDataNascimento = data.error.data_nascimento;
         $scope.errorAtivo = data.error.ativo;
-        $scope.errorRobo = data.error.robo_ligado;
         $scope.errorPlano = data.error.plano_id;
         $scope.errorSenha = data.error.senha;
         $scope.mensagemSucesso = null;
@@ -369,8 +376,10 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
       } else {
         $scope.dadosusuario = null;
         $scope.errorNome = null;
+        $scope.errorEmail = null;
+        $scope.errorDataNascimento = null;
+        $scope.errorCPF = null;
         $scope.errorAtivo = null;
-        $scope.errorRobo = null;
         $scope.errorPlano = null;
         $scope.errorSenha = null;
         $("#modal").modal('show');

@@ -16,10 +16,6 @@ if(empty($inputs->ativo))
   $error["ativo"] = "O campo conta ativa é obrigatório *";
 }
 
-if(empty($inputs->robo_ligado))
-{
-  $error["robo_ligado"] = "O campo Robô ligado é obrigatório *";
-}
 
 if(empty($inputs->plano_id))
 {
@@ -39,15 +35,16 @@ else
 {
   $nome = mysqli_real_escape_string($connect, $inputs->nome);
   $ativo = mysqli_real_escape_string($connect, $inputs->ativo);
-  $robo_ligado = mysqli_real_escape_string($connect, $inputs->robo_ligado);
   $plano_id = mysqli_real_escape_string($connect, $inputs->plano_id);
+  $data_nascimento = mysqli_real_escape_string($connect, $inputs->data_nascimento);
   $senha = mysqli_real_escape_string($connect, md5($inputs->senha));
+  $saldo_conta = mysqli_real_escape_string($connect, $inputs->saldo_conta);
   $CONSULTA = mysqli_query($connect, " SELECT * FROM planos WHERE id = '$plano_id'");
   $r = mysqli_fetch_assoc($CONSULTA);
   $plano_valor = $r['valor'];
 
 
-  $query = "UPDATE usuario set nome = '$nome', ativo = '$ativo', robo_ligado = '$robo_ligado', plano_id = '$plano_id', plano_valor = '$plano_valor', senha = '$senha' WHERE id = '$ID_USUARIO'";
+  $query = "UPDATE usuario set nome = '$nome', ativo = '$ativo', saldo_conta = '$saldo_conta', plano_id = '$plano_id', plano_valor = '$plano_valor', senha = '$senha' WHERE id = '$ID_USUARIO'";
   if(mysqli_query($connect, $query))
   {
     $data["message"] = " Os dados do usuário ".$nome." foram atualizados! ";

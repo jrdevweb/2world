@@ -11,7 +11,7 @@
               </ol>
             </div>
             <h4 class="page-title">
-              SAQUES
+              SOLICITAÇÃO DE SAQUES
             </h4>
           </div>
         </div>
@@ -54,10 +54,10 @@
               </div>
             </div>
             <div style="text-align:center;">
-              <span class="text-info" ng-if="usuarios.length <= 0"> Não foi encontrado nenhum registro.</span>
+              <span class="text-info" ng-if="saque.length <= 0"> Não foi encontrado nenhum registro.</span>
             </div>
             <div>
-              <span class="text-default" ng-if="usuarios.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
+              <span class="text-default" ng-if="saque.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
             </div>
             <div >
               <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="view/dirPagination.tpl.html"></dir-pagination-controls>

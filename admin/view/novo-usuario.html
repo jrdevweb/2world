@@ -11,7 +11,7 @@
               </ol>
             </div>
             <h4 class="page-title">
-              <button class="btn btn-danger btn-sm"></button>
+              CADASTRO
             </h4>
           </div>
         </div>
@@ -64,20 +64,10 @@
                   <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorAtivo" ng-bind-html="errorAtivo"></span>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>ROBÔ LIGADO: </label>
-                  <select ng-model="cadastro.robo_ligado" class="form-control">
-                    <option value="">Selecione</option>
-                    <option value="SIM">SIM</option>
-                    <option value="NAO">NAO</option>
-                  </select>
-                  <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorRobo" ng-bind-html="errorRobo"></span>
-                </div>
-              </div>
+
               <div class="col-md-4">
                 <div class="form-group" ng-init="listarPlanos()">
-                  <label>PLANO ROBÔ: </label>
+                  <label>PLANO INVESTIMENTO: </label>
                   <select ng-model="cadastro.plano" class="form-control">
                     <option value="">Selecione</option>
                     <option ng-repeat="p in planos" value="{{p.id}}">{{p.valor}}</option>
@@ -85,6 +75,7 @@
                   <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorPlano" ng-bind-html="errorPlano"></span>
                 </div>
               </div>
+
               <div class="col-md-4">
                 <div class="form-group" >
                   <label>SENHA:</label>
@@ -92,6 +83,15 @@
                   <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorSenha" ng-bind-html="errorSenha"></span>
                 </div>
               </div>
+
+              <div class="col-md-4">
+                <div class="form-group" >
+                  <label>SALDO CONTA: ($)</label>
+                  <input type="number" class="form-control" placeholder="Digite o saldo" ng-model="cadastro.saldo_conta" >
+                  <p class="text-info">Preencha caso a conta seja criada com saldo.</p>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="card-footer">

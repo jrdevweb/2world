@@ -64,14 +64,14 @@ if(empty($inputs->ativo))
   $error["ativo"] = "O campo conta ativa é obrigatório *";
 }
 
-if(empty($inputs->robo_ligado))
+if(empty($inputs->data_nascimento))
 {
-  $error["robo_ligado"] = "O campo Robô ligado é obrigatório *";
+  $error["data_nascimento"] = "O campo data de nascimento é obrigatório *";
 }
 
 if(empty($inputs->plano))
 {
-  $error["plano"] = "O campo plano robô é obrigatório *";
+  $error["plano"] = "O campo plano investimento é obrigatório *";
 }
 
 if(empty($inputs->senha))
@@ -89,17 +89,17 @@ else
   $email = mysqli_real_escape_string($connect, $inputs->email);
   $cpf = mysqli_real_escape_string($connect, $inputs->cpf);
   $data_nascimento = mysqli_real_escape_string($connect, $inputs->data_nascimento);
+  $email = mysqli_real_escape_string($connect, $inputs->email);
   $ativo = mysqli_real_escape_string($connect, $inputs->ativo);
-  $robo_ligado = mysqli_real_escape_string($connect, $inputs->robo_ligado);
   $plano_id = mysqli_real_escape_string($connect, $inputs->plano);
   $senha = mysqli_real_escape_string($connect, md5($inputs->senha));
-
+  $saldo_conta = mysqli_real_escape_string($connect, $inputs->saldo_conta);
   $CONSULTA = mysqli_query($connect, " SELECT * FROM planos WHERE id = '$plano_id'");
   $r = mysqli_fetch_assoc($CONSULTA);
   $plano_valor = $r['valor'];
 
-  $query = "INSERT INTO usuario (nome, email, cpf, data_nascimento, ativo, robo_ligado, plano_valor, plano_id, senha)
-  VALUES ('$nome','$email','$cpf','$data_nascimento','$ativo','$robo_ligado','$plano_valor','$plano_id','$senha')";
+  $query = "INSERT INTO usuario (nome, email, cpf, data_nascimento, ativo, saldo_conta, plano_valor, plano_id, senha)
+  VALUES ('$nome','$email','$cpf','$data_nascimento','$ativo','$saldo_conta','$plano_valor','$plano_id','$senha')";
   if(mysqli_query($connect, $query))
   {
     $data["message"] = "O cadastro do usuário ".$nome." foi feito com sucesso!";

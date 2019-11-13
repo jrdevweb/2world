@@ -11,43 +11,41 @@
               </ol>
             </div>
             <h4 class="page-title">
-              APLICAÇÃO
+              PLANOS INVESTIMENTOS
             </h4>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <a class="btn btn-primary" ng-href="#/cadastrar-aplicacao" style="margin-bottom:20px;"name="button">CADASTRAR APLICAÇÃO</a>
+          <a class="btn btn-primary" ng-href="#/cadastrar-aplicacao" style="margin-bottom:20px;"name="button">CADASTRAR PLANO</a>
           <div class="card-box card-box-table" ng-init="listarPlanos()">
             <div class="card">
 
               <div class="card-header" style="background:#4d5668; color: #fff;">
-                CADASTRAR APLICAÇÃO
+                PLANOS
               </div>
               <div class="table-responsive">
                 <table class="table table-dark mb-0">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>LOGO</th>
                       <th>DESRIÇÃO</th>
-                      <th>VALOR (USD)</th>
-                      <th>GANHO (%)</th>
-                      <!-- <th>PERCA (%)</th> -->
+                      <th>VALOR (U$)</th>
+                      <th>GANHO DIARIO (%)</th>
+                      <th>GANHO TOTAL (%)</th>
                       <th>AÇÃO</th>
                     </tr>
                   </thead>
                   <tbody style="color: #FFF;" dir-paginate="p in planos | itemsPerPage: 10">
                     <tr >
                       <td ng-bind-html="p.id"></td>
-                      <td><img ng-src="../assets/images/acoes/{{p.imagem_acao}}" style="height:40px;"></td>
                       <td ng-bind-html="p.descricao"></td>
-                      <td ng-bind-html="p.valor"></td>
-                      <td ng-bind-html="p.porcentagem_ganho"></td>
-                      <!-- <td ng-bind-html="p.porcentagem_perca"></td> -->
+                      <td ng-bind-html="p.valor_plano"></td>
+                      <td ng-bind-html="p.porcentagem_diario"></td>
+                      <td ng-bind-html="p.porcentagem_total"></td>
                       <td>
-                        <a ng-href="#/aplicacao/{{p.id}}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a ng-href="#/plano/{{p.id}}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i> EDITAR</a>
                       </td>
                     </tr>
                   </tbody>
@@ -55,10 +53,10 @@
               </div>
             </div>
             <div style="text-align:center;">
-              <span class="text-info" ng-if="usuarios.length <= 0"> Não foi encontrado nenhum registro.</span>
+              <span class="text-info" ng-if="planos.length <= 0"> Não foi encontrado nenhum registro.</span>
             </div>
             <div>
-              <span class="text-default" ng-if="usuarios.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
+              <span class="text-default" ng-if="planos.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
             </div>
             <div >
               <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="view/dirPagination.tpl.html"></dir-pagination-controls>

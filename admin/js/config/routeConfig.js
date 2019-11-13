@@ -25,22 +25,27 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/aplicacoes", {
+	$routeProvider.when("/cron", {
+		templateUrl: "view/cron.html",
+		controller: "homeCtrl",
+	});
+
+	$routeProvider.when("/planos", {
 		templateUrl: "view/planos.html",
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/venda-robo", {
+	$routeProvider.when("/planos-comprados", {
 		templateUrl: "view/vendas.html",
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/venda-robo/:id", {
+	$routeProvider.when("/plano-comprado/:id", {
 		templateUrl: "view/vendaId.html",
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/aplicacao/:id", {
+	$routeProvider.when("/plano/:id", {
 		templateUrl: "view/planoId.html",
 		controller: "homeCtrl",
 	});
