@@ -7,6 +7,11 @@ url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.ttf") format("tr
 url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.svg#DS-Digital") format("svg");
 }
 
+.background-logo{
+  background-image: url('./../images/fundo_login_2.png');
+  background-size: cover;
+}
+
 div.ex3 {
   background-color: lightblue;
   width: 100%;
@@ -121,7 +126,9 @@ div.ex3 {
 
   .authentication-bg-pattern {
     background-image: url("../images/bg-pattern.png");
-    background-color: #343b4a  }
+    background-color: #343b4a;
+    /* background-color: #3a1b47; */
+   }
 
     .card-box-table{
       background-color: #323a46  !important;

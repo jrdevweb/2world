@@ -389,39 +389,39 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   };
 
-  $scope.doShuffle = function() {
-    shuffleArray($scope.planosCRON);
-  }
-  var shuffleArray = function(array) {
-    var m = array.length, t, i;
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-    return array;
-  }
-  
-  $scope.callAtIntervalSHU = function() {
-    $scope.doShuffle();
-  }
-
-  $scope.callAtIntervalBTC = function() {
-    $scope.listarValorBitcoin();
-  }
-
-  $interval( function(){
-    $scope.callAtIntervalOP();
-  }, 3000);
-
-  $interval( function(){
-    $scope.callAtIntervalSHU();
-  }, 3000);
-
-  $interval( function(){
-    $scope.callAtIntervalBTC();
-  }, 5000);
+  // $scope.doShuffle = function() {
+  //   shuffleArray($scope.planosCRON);
+  // }
+  // var shuffleArray = function(array) {
+  //   var m = array.length, t, i;
+  //   while (m) {
+  //     i = Math.floor(Math.random() * m--);
+  //     t = array[m];
+  //     array[m] = array[i];
+  //     array[i] = t;
+  //   }
+  //   return array;
+  // }
+  //
+  // $scope.callAtIntervalSHU = function() {
+  //   $scope.doShuffle();
+  // }
+  //
+  // $scope.callAtIntervalBTC = function() {
+  //   $scope.listarValorBitcoin();
+  // }
+  //
+  // $interval( function(){
+  //   $scope.callAtIntervalOP();
+  // }, 3000);
+  //
+  // $interval( function(){
+  //   $scope.callAtIntervalSHU();
+  // }, 3000);
+  //
+  // $interval( function(){
+  //   $scope.callAtIntervalBTC();
+  // }, 5000);
 
   $scope.listarOperacoes = function(){
     $scope.operacoes = [];

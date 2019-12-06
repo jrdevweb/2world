@@ -72,7 +72,7 @@
                     <label>PLANO INVESTIMENTO: <span class="badge badge-warning">Dado Editável: </span></label>
                     <select ng-model="dadosusuario.plano_id" class="form-control">
                       <option value="">Selecione</option>
-                      <option ng-repeat="p in planos" value="{{p.id}}">{{p.valor}}</option>
+                      <option ng-repeat="p in planos" value="{{p.id}}">{{p.valor_plano}}</option>
                     </select>
                     <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorPlano" ng-bind-html="errorPlano"></span>
                   </div>

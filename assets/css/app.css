@@ -114,8 +114,8 @@ body {
 
 #sidebar-menu > ul > li > a.active {
   color: #fff;
-  background-color: #65709c;
-  border-right-color: #65709c;
+  background-color: #2d3d88;
+  border-right-color: #2d3d88;
 }
 
 #sidebar-menu a.active i {

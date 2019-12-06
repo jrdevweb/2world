@@ -96,7 +96,7 @@ else
   $saldo_conta = mysqli_real_escape_string($connect, $inputs->saldo_conta);
   $CONSULTA = mysqli_query($connect, " SELECT * FROM planos WHERE id = '$plano_id'");
   $r = mysqli_fetch_assoc($CONSULTA);
-  $plano_valor = $r['valor'];
+  $plano_valor = $r['valor_plano'];
 
   $query = "INSERT INTO usuario (nome, email, cpf, data_nascimento, ativo, saldo_conta, plano_valor, plano_id, senha)
   VALUES ('$nome','$email','$cpf','$data_nascimento','$ativo','$saldo_conta','$plano_valor','$plano_id','$senha')";

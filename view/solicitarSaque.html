@@ -25,10 +25,10 @@
             </div>
             <div class="card-block" style="padding:15px;">
               <div class="row">
-                <div class="col-md-12" ng-init="listarPagamentosDisponivel()">
+                <div class="col-md-12">
                   <div class="form-group" >
                     <label>SALDO DISPONÍVEL: </label>
-                    <input class="form-control" ng-repeat="pg in pgDisponivel" ng-repeat="pg in pgDisponivel" ng-model="pg.valor_dolar" disabled/>
+                    <input class="form-control" ng-value="0" disabled/>
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricao" ng-bind-html="errorDescricao"></span>
                   </div>
                 </div>
@@ -49,7 +49,7 @@
                         </li>
                       </ul>
                       <br>
-                      <label>Conta bancária (5 dias úteis*)</label>
+                      <!-- <label>Conta bancária (5 dias úteis*)</label>
 
                       <ul class="list-group list-group-flush">
                         <li class="list-group-item" ng-repeat="c in carteiraUsuario" style="font-size: 16px;">
@@ -65,7 +65,7 @@
                       </ul>
 
                       <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorCarteira" ng-bind-html="errorCarteira"></span>
-                    </div>
+                    </div> -->
 
                     <p>Não esqueça de manter os dados da sua carteira sempre atualizado. Se preferir, atualize aqui:
                       <a ng-href="#/conta" class="btn btn-primary rounded btn-xs"><i class="fas fa-retweet"></i> ATUALIZAR</a></p>
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="card-footer">
-                <button class="btn btn-primary" ng-click="solicitarSaque()">SOLICITAR SAQUE</button>
+                <button class="btn btn-primary" ng-disabled="true" ng-click="solicitarSaque()">SOLICITAR SAQUE</button>
               </div>
             </div>
           </div>
