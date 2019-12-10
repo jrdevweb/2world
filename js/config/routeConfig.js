@@ -10,26 +10,6 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/depositos", {
-		templateUrl: "view/depositos.html",
-		controller: "homeCtrl",
-	});
-
-	$routeProvider.when("/aplicacoes/:id", {
-		templateUrl: "view/roboCheckout.html",
-		controller: "homeCtrl",
-	});
-
-	$routeProvider.when("/aplicacoes", {
-		templateUrl: "view/roboCheckoutId.html",
-		controller: "homeCtrl",
-	});
-
-	$routeProvider.when("/mercado-aplicacoes", {
-		templateUrl: "view/robo.html",
-		controller: "homeCtrl",
-	});
-
 	$routeProvider.when("/conta", {
 		templateUrl: "view/meusdados.html",
 		controller: "homeCtrl",
@@ -55,21 +35,20 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/potencializar", {
-		templateUrl: "view/potencializar.html",
+	$routeProvider.when("/planos", {
+		templateUrl: "view/planos.html",
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/notificacoes", {
-		templateUrl: "view/notificacoes.html",
+	$routeProvider.when("/plano-comprado/:id", {
+		templateUrl: "view/planoComprado.html",
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/notificacao/:id", {
-		templateUrl: "view/notificacaoId.html",
+	$routeProvider.when("/blacktv", {
+		templateUrl: "view/blacktv.html",
 		controller: "homeCtrl",
 	});
-
 
 	$routeProvider.otherwise({
 		redirectTo: "/"});

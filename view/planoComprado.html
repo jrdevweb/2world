@@ -1,0 +1,104 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li>
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              PLANOS
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
+                <i class="fas fa-tags"></i>
+                {{dadosPlano2W.descricao}}
+              </div>
+              <div class="card-block" style="padding:20px; text-align:left;">
+                <div class="card">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> Valor do plano: <b>$ {{dadosPlano2W.valor_plano}}</b></li>
+                    <li class="list-group-item"> Rentabilidade: <b> {{dadosPlano2W.meses_rentabilidade}} meses</b></li>
+                    <li class="list-group-item"> Rendimentos totais: <b> {{dadosPlano2W.porcentagem_total}} %</b></li>
+                    <li class="list-group-item"> Taxa saque: <b> {{dadosPlano2W.taxa_saque}} %</b></li>
+                    <li class="list-group-item"> Nivel Indicação: <b> {{dadosPlano2W.nivel_indicacao | number}} pessoas</b></li>
+                  </ul>
+                </div>
+                <a name="plano" class="btn btn-warning btn-block">Aguardando pagamento</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6" ng-init="listarValorBitcoin()">
+            <div class="card">
+              <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
+                <i class="fab fa-bitcoin"></i>
+                PAGAMENTO
+              </div>
+              <div class="card-block" style="padding:20px; text-align:left;">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <h3>Instruções para Pagamento</h3>
+                      <p>Envie para a carteira de Bitcoin com o QRCODE disponível ao lado o valor exato mostrado abaixo.</p>
+                      <p>Caso não efetue o pagamento em até 24 horas, essa compra irá expirar e será automaticamente cancelado.</p>
+
+                    </div>
+                    <div class="col-md-5">
+                      <img class="img-responsive" src="assets/images/qrcode.png" width="150">
+                      <p style="font-size:25px;">{{dadosPlano2W.valor_plano / bitcoin.USD}}</p>
+                      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modalError" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Erro</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Não foi possível completar sua solicitação.</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="errorRobo" ng-bind-html="errorRobo"></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="messagemSuccesso" ng-bind-html="messagemSuccesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

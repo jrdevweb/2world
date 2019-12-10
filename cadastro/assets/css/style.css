@@ -7,6 +7,11 @@ url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.ttf") format("tr
 url("//db.onlinewebfonts.com/t/63f874d192fb3892d88d5e26f942b5e2.svg#DS-Digital") format("svg");
 }
 
+.background-logo{
+  background-image: url('./../images/fundo_login_2.png');
+  background-size: cover;
+}
+
 #bitcoin{
   margin-bottom: 30px;
   width:200px;

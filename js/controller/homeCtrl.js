@@ -28,98 +28,45 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
-  $scope.marcarTodosComoLido = function(){
-    $http({
-      method: 'POST',
-      url: "api/marcarTodosComoLido.php",
-      data : $scope.marcartodos,
-    }).success(function(data){
-      if(data.error) {
-        $scope.mensagemSucesso = null;
-        console.log(data);
-      } else {
-        $scope.marcartodos = null;
-        $scope.messageSuccesso = data.message;
-        $scope.listarNotificacoes();
-        $scope.contarNotificacao();
-      }
-    });
-  }
-
-  $scope.dadosnotificacao = [];
-  $scope.dadosNotificacao = function(id) {
-    $scope.id = $routeParams.id;
-    $http({
-      method : 'POST',
-      url : 'api/notificacaoId.php',
-      data : {'id':id}
-    }).then(function(response) {
-      var nome = response.data;
-      $scope.dadosnotificacao = nome[0];
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
-  $scope.dadosNotificacao($routeParams.id);
-
-  $scope.listarNotificacoes = function(){
-    $scope.notificacoes = [];
+  $scope.listarValorBitcoin = function(){
+    $scope.bitcoin = [];
     $http({
       method : 'GET',
-      url : 'api/notificacoes.php',
+      url : 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',
     }).then(function(response) {
-      $scope.notificacoes = response.data;
+      $scope.bitcoin = response.data;
+      console.log($scope.bitcoin);
     }, function(response) {
       console.log(response.data);
       console.log(response.status);
     });
   };
-  $scope.listarNotificacoes();
 
-  $scope.contarNotificacao = function(){
-    $scope.contarnotificacoes = [];
+  $scope.listarPlanos2W = function(){
+    $scope.planos = [];
     $http({
       method : 'GET',
-      url : 'api/contarNotificacoes.php',
+      url : 'api/planos.php',
     }).then(function(response) {
-      $scope.contarnotificacoes = response.data;
+      $scope.planos = response.data;
     }, function(response) {
       console.log(response.data);
       console.log(response.status);
     });
   };
-  $scope.contarNotificacao();
 
-  $scope.listarIndicacao = function(){
-    $scope.indicacao = [];
+  $scope.listarPlanosCompradosPeloUsuario = function(){
+    $scope.planosUsuario = [];
     $http({
       method : 'GET',
-      url : 'api/indicacao.php',
+      url : 'api/planosCompradosPeloUsuario.php',
     }).then(function(response) {
-      $scope.indicacao = response.data;
+      $scope.planosUsuario = response.data;
     }, function(response) {
       console.log(response.data);
       console.log(response.status);
     });
   };
-
-  $scope.robocheckout = [];
-  $scope.dadosRoboChekout = function(id) {
-    $scope.id = $routeParams.id;
-    $http({
-      method : 'POST',
-      url : 'api/roboCheckout.php',
-      data : {'id':id}
-    }).then(function(response) {
-      var nome = response.data;
-      $scope.robocheckout = nome[0];
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
-  $scope.dadosRoboChekout($routeParams.id);
 
   $scope.listarPlanoUsuario = function(){
     $scope.planoUsuario = [];
@@ -134,60 +81,28 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   };
 
-  $scope.potencializarValor = function(){
-    $http({
-      method: 'POST',
-      url: "api/potencializar.php",
-      data : $scope.potenci,
-    }).success(function(data){
-      if(data.error) {
-        $scope.errorPotencializar = data.error.valor;
-        $scope.mensagemSucesso = null;
-        console.log(data);
-      } else {
-        $scope.potenci = null;
-        $scope.errorPotencializar = null;
-        $scope.messageSuccesso = data.message;
-        $("#modal").modal('show');
-      }
-    });
-  }
-
-  $scope.listarRoboCheckout = function(){
-    $scope.roboList = [];
-    $http({
-      method : 'GET',
-      url : 'api/roboCheckoutId.php',
-    }).then(function(response) {
-      $scope.roboList = response.data;
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
-
-  $scope.robocheckout = [];
-  $scope.dadosRoboChekout = function(id) {
+  $scope.dadosPlano2W = [];
+  $scope.dadosPlano2W = function(id) {
     $scope.id = $routeParams.id;
     $http({
       method : 'POST',
-      url : 'api/roboCheckout.php',
+      url : 'api/planoCompradoId.php',
       data : {'id':id}
     }).then(function(response) {
       var nome = response.data;
-      $scope.robocheckout = nome[0];
+      $scope.dadosPlano2W = nome[0];
     }, function(response) {
       console.log(response.data);
       console.log(response.status);
     });
   };
-  $scope.dadosRoboChekout($routeParams.id);
+  $scope.dadosPlano2W($routeParams.id);
 
-  $scope.comprarRobo = function(id){
+  $scope.comprarPlano = function(id){
     $scope.id = $routeParams.id;
     $http({
       method: 'POST',
-      url: "api/comprarRobo.php",
+      url: "api/comprarPlano.php",
       data : {'id':id}
     }).success(function(data){
       if(data.error) {
@@ -203,7 +118,7 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
         $timeout( function(){
           $("#modal").modal('hide');
           $location.path(data.autorizado);
-        }, 2500 );
+        }, 2000 );
       }
     });
   }
@@ -376,19 +291,6 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   };
 
-  $scope.listarOperacoesGanho = function(){
-    $scope.operacoesGanho = [];
-    $http({
-      method : 'GET',
-      url : 'api/operacoesGanho.php',
-    }).then(function(response) {
-      $scope.operacoesGanho = response.data;
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
-
   // $scope.doShuffle = function() {
   //   shuffleArray($scope.planosCRON);
   // }
@@ -422,19 +324,6 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
   // $interval( function(){
   //   $scope.callAtIntervalBTC();
   // }, 5000);
-
-  $scope.listarOperacoes = function(){
-    $scope.operacoes = [];
-    $http({
-      method : 'GET',
-      url : 'api/operacoes.php',
-    }).then(function(response) {
-      $scope.operacoes = response.data;
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
 
   $scope.listarValorBitcoin = function(){
     $scope.bitcoin = [];

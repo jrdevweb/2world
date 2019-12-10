@@ -79,15 +79,14 @@ else
   $senha = mysqli_real_escape_string($connect, md5($inputs->senha));
   $datecreated = date("Y/m/d H:i:s");
   $ativo = 'NAO';
-  $robo_ligado = 'NAO';
 
-  $query = "INSERT INTO usuario (nome, data_nascimento, email, cpf, senha, ativo, robo_ligado, id_usuario_indicador, datecreated) VALUES
+  $query = "INSERT INTO usuario (nome, data_nascimento, email, cpf, senha, ativo, id_usuario_indicador, datecreated) VALUES
 
-  ('$nome','$data_nascimento','$email','$cpf','$senha','$ativo','$robo_ligado','$indicacao','$datecreated')";
+  ('$nome','$data_nascimento','$email','$cpf','$senha','$ativo','$indicacao','$datecreated')";
 
   if(mysqli_query($connect, $query))
   {
-    $data["message"] = " ".$nome.", seu cadastro foi realizado com sucesso na plataforma! Você será redirecionado para tela de login";
+    $data["message"] = " ".$nome.", seu cadastro foi realizado com sucesso na plataforma!";
   }
 
   $ID_USUARIO_RECUPERADO = mysqli_insert_id($connect);

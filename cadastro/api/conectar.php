@@ -1,6 +1,6 @@
 <?php
- $connect = mysqli_connect("localhost", "ntxme_wp2", "Jr10041992Jr", "ntxme_wp2");
-   // $connect = mysqli_connect("localhost", "root", "", "wp2");
+  $connect = mysqli_connect("localhost", "u339117845_novo", "Jr10041992Jr", "u339117845_novo");
+    // $connect = mysqli_connect("localhost", "root", "", "2world");
 mysqli_set_charset($connect,"utf8");
 
 ?>

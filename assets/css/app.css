@@ -15,7 +15,8 @@ html {
 body {
   padding-bottom: 60px;
   overflow-x: hidden;
-  background-color: #242d3c !important
+  background: radial-gradient(ellipse at center, #29387d 0%, #1a234f 100%);
+  /* background-color: #242d3c !important */
 
 }
 
@@ -74,7 +75,7 @@ body {
 
 .left-side-menu {
   width: 240px;
-  background: #1f2533;
+  background: #161E43;
   bottom: 0;
   padding: 20px 0;
   position: fixed;
@@ -381,7 +382,7 @@ body {
     display: none; }
 
 .navbar-custom {
-  background-color: #343b4a;
+  background-color: #161E43;
   padding: 0 10px 0 0;
   position: fixed;
   left: 0;
@@ -568,7 +569,7 @@ body {
 
 .page-title-box {
   position: relative;
-  background-color: #1f2533;
+  background-color: #2d3d88;
   padding: 0 30px;
   margin: 0 -30px 30px -30px; }
   .page-title-box .page-title {

@@ -12,54 +12,62 @@
               </ol>
             </div>
             <h4 class="page-title">
-              APLICAÇÕES
+              PLANOS
             </h4>
           </div>
         </div>
       </div>
 
-      <div class="col-md-12" ng-init="listarPlanos()">
-        <h3 class="text-white">APLICACÕES DE MERCADO</h3>
-        <div class="card-box card-box-table">
+      <div class="col-md-12" ng-init="listarPlanosCompradosPeloUsuario()">
+        <h3 class="text-white" ng-show="planosUsuario.length > 0">COMPRADOS OU AGUARDANDO PAGAMENTO</h3>
           <div class="row">
-            <div class="col-md-4" ng-repeat="p in planos">
+            <div class="col-md-3" ng-repeat="pc in planosUsuario">
               <div class="card">
-                <div class="card-header card-gradient-acao" style="text-align:center; font-size:20px;">
-                  <img ng-src="./assets/images/acoes/{{p.imagem_acao}}" style="height: 150px;" >
+                <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
+                  <i class="fas fa-tags"></i>
+                   {{pc.descricao}}
                 </div>
-                <div class="card-block" style="padding:10px; text-align:center;">
+                <div class="card-block" style="padding:20px; text-align:left;">
                   <div class="card">
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">
-
-                        <i class="fas fa-caret-up pull-left card-cron-green" style="font-size:50px;"></i>
-                        <span class="badge badge-success pull-left label-cron-green"> COMPRAR</span>
-
-                        <i class="fas fa-caret-down pull-right card-cron-red" style="font-size:50px;"></i>
-
-                        <span class="badge badge-primary label-cron-blue" style="font-size:12px;"> $ {{p.valor_acao}}</span>
-                        <span class="badge badge-danger pull-right label-cron-red"> VENDER</span>
-                      </li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Investimento <b>${{p.valor}}</b></li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Diário até: <b>{{p.porcentagem_ganho}} %</b></li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Segunda à Sexta</li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Taxa de Saque: <b>{{p.taxa_saque}}%</b></li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Valor Mínimo de Saque: <b>{{p.valor_minimo_saque}}</b></li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Indicação <b>5%</b></li>
-                      <li class="list-group-item"><i class="fas fa-check" style="color: #65709c;"></i> Licença 12 meses</li>
-                      <div class="card border border-secondary">
-                        <div class="card-body text-secondary" style="padding:10px;">
-                          <p class="card-text">Retiradas pagas em até 24 horas em sua carteira bitcoin</p>
-                        </div>
-                      </div>
+                      <li class="list-group-item"> Valor do plano: <b>$ {{pc.valor_plano}}</b></li>
+                      <li class="list-group-item"> Rentabilidade: <b> {{pc.meses_rentabilidade}} meses</b></li>
+                      <li class="list-group-item"> Rendimentos totais: <b> {{pc.porcentagem_total}} %</b></li>
+                      <li class="list-group-item"> Taxa saque: <b> {{pc.taxa_saque}} %</b></li>
+                      <li class="list-group-item"> Nivel Indicação: <b> {{pc.nivel_indicacao | number}} pessoas</b></li>
                     </ul>
                   </div>
-                  <button ng-click="comprarRobo(p.id)" name="robo" class="btn btn-primary">COMPRAR APLICAÇÕES {{p.descricao}}</button>
+                  <a ng-href="#/plano-comprado/{{pc.id}}" class="btn btn-warning">VER PLANO</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+      </div>
+
+      <div class="col-md-12" ng-init="listarPlanos2W()">
+        <h3 class="text-white">TODOS OS PLANOS</h3>
+          <div class="row">
+            <div class="col-md-3" ng-repeat="p in planos">
+              <div class="card">
+                <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
+                  <i class="fas fa-tags"></i>
+                   {{p.descricao}}
+                </div>
+                <div class="card-block" style="padding:20px; text-align:left;">
+                  <div class="card">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"> Valor do plano: <b>$ {{p.valor_plano}}</b></li>
+                      <li class="list-group-item"> Rentabilidade: <b> {{p.meses_rentabilidade}} meses</b></li>
+                      <li class="list-group-item"> Rendimentos totais: <b> {{p.porcentagem_total}} %</b></li>
+                      <li class="list-group-item"> Taxa saque: <b> {{p.taxa_saque}} %</b></li>
+                      <li class="list-group-item"> Nivel Indicação: <b> {{p.nivel_indicacao | number}} pessoas</b></li>
+                    </ul>
+                  </div>
+                  <button ng-click="comprarPlano(p.id)" name="robo" class="btn btn-primary">Comprar</button>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
@@ -73,7 +81,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-        <h3 style="font-size:30px; color: #575757;">Algo deu errado!</h3>
+        <h3 style="font-size:30px; color: #575757;">Não foi possível completar sua solicitação.</h3>
         <h3 style="font-size:20px; color: #575757;" ng-show="errorRobo" ng-bind-html="errorRobo"></h3>
       </div>
     </div>
