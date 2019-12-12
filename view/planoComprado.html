@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <div class="col-md-6" ng-init="listarValorBitcoin()">
+          <div class="col-md-9" ng-init="listarValorBitcoin()">
             <div class="card">
               <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
                 <i class="fab fa-bitcoin"></i>
@@ -50,16 +50,26 @@
               <div class="card-block" style="padding:20px; text-align:left;">
                 <div class="card">
                   <div class="row">
-                    <div class="col-md-7">
-                      <h3>Instruções para Pagamento</h3>
+                    <div class="col-md-7" style="margin-bottom:10px;">
+                      <h3>Instruções para Pagamento com BTC</h3>
                       <p>Envie para a carteira de Bitcoin com o QRCODE disponível ao lado o valor exato mostrado abaixo.</p>
                       <p>Caso não efetue o pagamento em até 24 horas, essa compra irá expirar e será automaticamente cancelado.</p>
 
+                      <p class="text-info">Caso já tenha feito a transferência do valor ao lado, confirme seu pagamento com o HASH da transação logo abaixo.</p>
+                      <div class="form-group" >
+                        <input class="form-control" type="text" ng-model="dadosPlano2W.hash" placeholder="HASH de Pagamento">
+                      </div>
+                      <div class="form-group" >
+                        <button class="btn btn-primary btn-sm" name="button" ng-click="confirmarPagamentoHash()">Confirmar Pagamento com HASH</button>
+                      </div>
+                      <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorHash" ng-bind-html="errorHash"></span>
+
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-5 " style="text-align:center;">
                       <img class="img-responsive" src="assets/images/qrcode.png" width="150">
-                      <p style="font-size:25px;">{{dadosPlano2W.valor_plano / bitcoin.USD}}</p>
-                      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                      <p style="font-size:22px;">{{dadosPlano2W.valor_plano / bitcoin.USD}}</p>
+                      <div class="loader"></div>
+                      <!-- <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
                     </div>
                   </div>
                 </div>
@@ -67,6 +77,41 @@
             </div>
           </div>
 
+          <div class="col-md-3">
+
+          </div>
+
+          <div class="col-md-9" ng-init="listarValorBitcoin()">
+            <div class="card">
+              <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
+                <i class="fas fa-piggy-bank"></i>
+                PAGAMENTO
+              </div>
+              <div class="card-block" style="padding:20px; text-align:left;">
+                <div class="card">
+                  <div class="row">
+                    <div class="col-md-7" style="margin-bottom:10px;">
+                      <h3>Instruções para Pagamento com Conta Bancária</h3>
+                      <p>Transfira ou Deposite o valor de <strong style="font-size:20px; background: #f2f2f2;">{{dadosPlano2W.valor_plano | currency}} </strong> </br>e envie o comprovante para nossa equipe financeira ativar sua conta.</p>
+
+                      <a  target="_blank" ng-href="https://api.whatsapp.com/send?phone=555599291441&text=ENVIAR%20COMPROVANTE%20VALOR%20{{dadosPlano2W.valor_plano}}" class="btn btn-success" name="button">Enviar Comprovante</a>
+                    </div>
+                    <div class="col-md-5 ">
+                      <div class="card-block" style="padding:20px; text-align:left;" ng-init="listarContaBancaria()">
+                        <div class="card" ng-repeat="c in contabancaria">
+                          <ul class="list-group list-group-flush" >
+                            <li class="list-group-item"> BANCO <b>{{c.banco}}</b></li>
+                            <li class="list-group-item"> AGÊNCIA <b> {{c.agencia}}</b></li>
+                            <li class="list-group-item"> CONTA <b> {{c.conta}}</b></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +142,7 @@
       </div>
       <div class="modal-body">
         <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
-        <h3 style="font-size:20px; color: #575757;" ng-show="messagemSuccesso" ng-bind-html="messagemSuccesso"></h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
       </div>
     </div>
   </div>

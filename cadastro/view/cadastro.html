@@ -41,23 +41,15 @@
 
                 <div class="col-md-6">
                   <div class="form-group mb-3">
-                    <label>CPF </label>
-                    <input class="form-control" type="text" placeholder="Digite seu documento" ng-model="cadastro.cpf" mask="999.999.999-99">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorCPF" ng-bind-html="errorCPF"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-7">
-                  <div class="form-group mb-3">
                     <label>Email</label>
                     <input class="form-control" type="email" placeholder="Digite seu Email" ng-model="cadastro.email">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorEmail" ng-bind-html="errorEmail"></span>
                   </div>
                 </div>
+              </div>
 
-                <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-12">
                   <div class="form-group mb-3">
                     <label>Senha</label>
                     <input class="form-control" type="password" placeholder="Digite sua senha" ng-model="cadastro.senha">

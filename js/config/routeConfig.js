@@ -50,6 +50,11 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
+	$routeProvider.when("/transferir-saldo", {
+		templateUrl: "view/transferir-saldo.html",
+		controller: "homeCtrl",
+	});
+
 	$routeProvider.otherwise({
 		redirectTo: "/"});
 

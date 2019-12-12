@@ -80,6 +80,16 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
+	$routeProvider.when("/loja", {
+		templateUrl: "view/loja.html",
+		controller: "homeCtrl",
+	});
+
+	$routeProvider.when("/cadastrar-produto", {
+		templateUrl: "view/cadastrarProduto.html",
+		controller: "homeCtrl",
+	});
+
 	$routeProvider.otherwise({
 		redirectTo: "/"});
 

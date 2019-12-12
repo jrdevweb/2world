@@ -11,14 +11,14 @@
               </ol>
             </div>
             <h4 class="page-title">
-              ROBO CHECKOUT
+              PLANO
             </h4>
           </div>
         </div>
       </div>
 
       <div class="col-md-12">
-        <h3 class="text-white">ROBÔ</h3>
+        <h3 class="text-white">PLANO</h3>
         <div class="row">
           <div class="col-md-4">
             <div class="card">
@@ -35,19 +35,10 @@
                     <li class="list-group-item">Data: {{robocheckout.data_compra}}</li>
                     <li class="list-group-item">Diário: {{robocheckout.porcentagem_ganho}}%</li>
                   </ul>
-                  <ul class="list-group list-group-flush">
-                    <h3 style="font-size:20px;">Comprovante</h3>
-                    <li class="list-group-item" ng-if="robocheckout.comprovante !== null">
-                      <a ng-href="../receipt/{{robocheckout.comprovante}}" target="_blank"><i class="fas fa-file-alt"></i> Link do comprovante</a>
-                    </li>
-                    <li class="list-group-item" ng-if="robocheckout.comprovante == null">
-                      Não existe comprovante anexado.
-                    </li>
-                  </ul>
+
                 </div>
               </div>
               <div class="card-footer text-muted">
-                <p class="text-danger">Lembre-se de validar o comprovante antes de aprovar o cadastro.</p>
                 <button class="btn btn-primary" name="button" ng-click="aprovarCadastro()">APROVAR COMPRA</button>
               </div>
             </div>

@@ -11,40 +11,41 @@
               </ol>
             </div>
             <h4 class="page-title">
-              PLANO COMPRADOS
+              LOJA
             </h4>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="card-box card-box-table" ng-init="listarPlanosComprados()">
+          <a class="btn btn-primary" ng-href="#/cadastrar-produto" style="margin-bottom:20px;"name="button">CADASTRAR PRODUTO</a>
+          <div class="card-box card-box-table" ng-init="listarProdutosLoja()">
             <div class="card">
+
               <div class="card-header" style="background:#4d5668; color: #fff;">
-                PLANOS
+                CADASTRO DE PRODUTOS
               </div>
               <div class="table-responsive">
                 <table class="table table-dark mb-0">
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>USUARIO</th>
+                      <th>CODIGO</th>
+                      <th>DESCRICAO</th>
                       <th>VALOR</th>
-                      <th>DATA COMPRA</th>
-                      <th>STATUS</th>
+                      <th>QUANTIDADE DISPONIVEL</th>
                       <th>AÇÃO</th>
                     </tr>
                   </thead>
-                  <tbody style="color: #FFF;" dir-paginate="p in planoscomprados | itemsPerPage: 10">
+                  <tbody style="color: #FFF;" dir-paginate="p in produtosloja | itemsPerPage: 10">
                     <tr >
                       <td ng-bind-html="p.id"></td>
-                      <td ng-bind-html="p.plano_id"></td>
-                      <td ng-bind-html="p.usuario_id"></td>
-                      <td ng-bind-html="p.data_compra"></td>
-                      <td ng-if="p.status == 'PENDENTE'"><span class="badge badge-danger">PENDENTE</span></td>
-                      <td ng-if="p.status == 'PAGO'"><span class="badge badge-success">PAGO</span></td>
+                      <td ng-bind-html="p.codigo"></td>
+                      <td ng-bind-html="p.descricao"></td>
+                      <td ng-bind-html="p.valor"></td>
+                      <td ng-bind-html="p.quantidade_disponivel"></td>
                       <td>
-                        <a ng-href="#/plano-comprado/{{p.id}}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a ng-href="#/saque/{{s.id}}" class="btn btn-primary btn-sm"> EDITAR </a>
                       </td>
                     </tr>
                   </tbody>
@@ -52,16 +53,19 @@
               </div>
             </div>
             <div style="text-align:center;">
-              <span class="text-info" ng-if="planoscomprados.length <= 0"> Não foi encontrado nenhum registro.</span>
+              <span class="text-info" ng-if="saque.length <= 0"> Não foi encontrado nenhum registro.</span>
             </div>
             <div>
-              <span class="text-default" ng-if="planoscomprados.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
+              <span class="text-default" ng-if="saque.length > 0"> Total de registros: <b>{{usuarios.length}}</b></span>
             </div>
             <div >
               <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="view/dirPagination.tpl.html"></dir-pagination-controls>
             </div>
           </div>
         </div>
+
+
+
       </div>
     </div>
   </div>

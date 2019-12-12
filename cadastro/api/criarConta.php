@@ -5,26 +5,26 @@ $data = array();
 $error = array();
 require 'conectar.php';
 
-function validaCPF($cpf) {
-
-  $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
-  if (strlen($cpf) != 11) {
-    return false;
-  }
-  if (preg_match('/(\d)\1{10}/', $cpf)) {
-    return false;
-  }
-  for ($t = 9; $t < 11; $t++) {
-    for ($d = 0, $c = 0; $c < $t; $c++) {
-      $d += $cpf{$c} * (($t + 1) - $c);
-    }
-    $d = ((10 * $d) % 11) % 10;
-    if ($cpf{$c} != $d) {
-      return false;
-    }
-  }
-  return true;
-}
+// function validaCPF($cpf) {
+//
+//   $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+//   if (strlen($cpf) != 11) {
+//     return false;
+//   }
+//   if (preg_match('/(\d)\1{10}/', $cpf)) {
+//     return false;
+//   }
+//   for ($t = 9; $t < 11; $t++) {
+//     for ($d = 0, $c = 0; $c < $t; $c++) {
+//       $d += $cpf{$c} * (($t + 1) - $c);
+//     }
+//     $d = ((10 * $d) % 11) % 10;
+//     if ($cpf{$c} != $d) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
 
 if(empty($inputs->nomeCadastro))
 {
@@ -50,15 +50,15 @@ elseif(isset($inputs->email)){
   $error["email"] = "Já existe um cadastro com esse email.";
 }
 
-if(empty($inputs->cpf))
-{
-  $error["cpf"] = "O CPF é obrigatório *";
-}
-
-elseif(!validaCPF($inputs->cpf))
-{
-  $error["cpf"] = "O CPF é inválido *";
-}
+// if(empty($inputs->cpf))
+// {
+//   $error["cpf"] = "O CPF é obrigatório *";
+// }
+//
+// elseif(!validaCPF($inputs->cpf))
+// {
+//   $error["cpf"] = "O CPF é inválido *";
+// }
 
 if(empty($inputs->senha))
 {
@@ -75,14 +75,14 @@ else
   $nome = mysqli_real_escape_string($connect, $inputs->nomeCadastro);
   $data_nascimento = mysqli_real_escape_string($connect, $inputs->data_nascimento);
   $email = mysqli_real_escape_string($connect, $inputs->email);
-  $cpf = mysqli_real_escape_string($connect, $inputs->cpf);
+  // $cpf = mysqli_real_escape_string($connect, $inputs->cpf);
   $senha = mysqli_real_escape_string($connect, md5($inputs->senha));
   $datecreated = date("Y/m/d H:i:s");
   $ativo = 'NAO';
 
-  $query = "INSERT INTO usuario (nome, data_nascimento, email, cpf, senha, ativo, id_usuario_indicador, datecreated) VALUES
+  $query = "INSERT INTO usuario (nome, data_nascimento, email, senha, ativo, id_usuario_indicador, datecreated) VALUES
 
-  ('$nome','$data_nascimento','$email','$cpf','$senha','$ativo','$indicacao','$datecreated')";
+  ('$nome','$data_nascimento','$email','$senha','$ativo','$indicacao','$datecreated')";
 
   if(mysqli_query($connect, $query))
   {

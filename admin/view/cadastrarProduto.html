@@ -1,0 +1,93 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
+              </ol>
+            </div>
+            <h4 class="page-title">
+              CADASTRO DE PRODUTO
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header" style="background:#4d5668; color: #fff;">
+              CADASTRO DE PRODUTO
+            </div>
+            <div class="card-block" style="padding:15px;">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>CODIGO: </label>
+                    <p><b>Gerado automaticamente ao salvar</b> </p>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group" >
+                    <label>DESCRIÇÃO: </label>
+                    <input type="text" class="form-control" placeholder="Digite a descrição do produto" ng-model="produto.descricao">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricaoProduto" ng-bind-html="errorDescricaoProduto"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>VALOR ($):  </label>
+                    <input type="text" class="form-control" placeholder="Digite o valor" ng-model="produto.valor">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorProduto" ng-bind-html="errorValorProduto"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group" >
+                    <label>QUANTIDADE:  </label>
+                    <input type="text" class="form-control" placeholder="Digite a quantidade disponível" ng-model="produto.quantidade_disponivel">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorQuantidadeDisponivel" ng-bind-html="errorQuantidadeDisponivel"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="form-group" >
+                    <label>IMAGEM PRODUTO:  </label>
+                    <input type="text" class="form-control" placeholder="Digite a url da imagem do produto" ng-model="produto.imagem_produto">
+                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorImagemProduto" ng-bind-html="errorImagemProduto"></span>
+                  </div>
+                  <img ng-show="produto.imagem_produto.length > 0" class="img-responsive" ng-src="{{produto.imagem_produto}}" width="250px;">
+                </div>
+
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" ng-click="cadastrarProduto()">CADASTRAR PRODUTO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-center" id="modal" tabindex="-1" role="dialog" aria-labelledby="myCenterModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myCenterModalLabel">Successo</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      </div>
+      <div class="modal-body">
+        <h3 style="font-size:30px; color: #575757;">Sucesso!</h3>
+        <h3 style="font-size:20px; color: #575757;" ng-show="mensagemSucesso" ng-bind-html="mensagemSucesso"></h3>
+      </div>
+    </div>
+  </div>
+</div>

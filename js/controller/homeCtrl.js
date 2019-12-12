@@ -28,6 +28,75 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
+  $scope.transferirSaldo = function(){
+    $http({
+      method: 'POST',
+      url: "api/transferirSaldo.php",
+      data : $scope.transferencia,
+    }).success(function(data){
+      if(data.error) {
+        $scope.errorTransferencia = data.error.usuario;
+        $scope.errorValorTransferencia = data.error.valor;
+        $scope.mensagemSucesso = null;
+        console.log(data);
+      } else {
+        $scope.transferencia = null;
+        $scope.errorTransferencia = null;
+        $scope.errorValorTransferencia = null;
+        $scope.mensagemSucesso = data.message;
+        $("#modal").modal('show');
+        $scope.listarSaldoConta();
+      }
+    });
+  }
+
+  $scope.listarSaldoConta = function(){
+    $scope.saldoconta = [];
+    $http({
+      method : 'GET',
+      url : 'api/saldoConta.php',
+    }).then(function(response) {
+      $scope.saldoconta = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+  $scope.listarContaBancaria = function(){
+    $scope.contabancaria = [];
+    $http({
+      method : 'GET',
+      url : 'api/contaBancaria.php',
+    }).then(function(response) {
+      $scope.contabancaria = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+  $scope.confirmarPagamentoHash = function(){
+    $http({
+      method: 'POST',
+      url: "api/confirmarPagamentoHash.php",
+      data : $scope.dadosPlano2W,
+    }).success(function(data){
+      if(data.error) {
+        $scope.errorHash = data.error.hash;
+        $scope.mensagemSucesso = null;
+        console.log(data);
+      } else {
+        $scope.dadosPlano2W.hash = null;
+        $scope.errorHash = null;
+        $scope.mensagemSucesso = data.message;
+        $("#modal").modal('show');
+        $scope.dadosPlano2W($routeParams.id);
+      }
+    });
+  }
+
+
   $scope.listarValorBitcoin = function(){
     $scope.bitcoin = [];
     $http({
@@ -35,6 +104,20 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
       url : 'https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=USD',
     }).then(function(response) {
       $scope.bitcoin = response.data;
+      console.log($scope.bitcoin);
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+  $scope.listarValorEthereum = function(){
+    $scope.ethereum = [];
+    $http({
+      method : 'GET',
+      url : 'https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD',
+    }).then(function(response) {
+      $scope.ethereum = response.data;
       console.log($scope.bitcoin);
     }, function(response) {
       console.log(response.data);

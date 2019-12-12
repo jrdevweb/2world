@@ -30,6 +30,20 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
 
   $scope.dataAtual = new Date();
 
+  $scope.listarProdutosLoja = function(){
+    $scope.produtosloja = [];
+    $http({
+      method : 'GET',
+      url : 'api/produtosLoja.php',
+    }).then(function(response) {
+      $scope.produtosloja = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+
   $scope.listarNotificacoes = function(){
     $scope.notificacoes = [];
     $http({
