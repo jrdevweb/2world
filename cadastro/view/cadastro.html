@@ -46,10 +46,19 @@
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorEmail" ng-bind-html="errorEmail"></span>
                   </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
+                  <div class="form-group" ng-init="listarPlanos2W()">
+                    <label>PLANO: </label>
+                    <select ng-model="cadastro.plano" class="form-control">
+                      <option value="">Escolha seu plano</option>
+                      <option ng-repeat="p in planos" value="{{p.id}}">{{p.valor_plano | currency}}</option>
+                    </select>
+                    <span class="text-danger animated fadeIn text-validacao-error" ng-show="errorPlano" ng-bind-html="errorPlano"></span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
                   <div class="form-group mb-3">
                     <label>Senha</label>
                     <input class="form-control" type="password" placeholder="Digite sua senha" ng-model="cadastro.senha">
@@ -65,6 +74,14 @@
               <div class="form-group mb-0 text-center">
                 <button class="btn btn-success btn-block" ng-click="criarConta()"> CRIAR CONTA AGORA </button>
               </div>
+
+              <p style="text-align:center; margin-top:15px;">OU</p>
+
+              <div class="form-group mb-0 text-center">
+                <a target="_blank" ng-href="http://localhost/2world/" class="btn btn-primary btn-block"> FAZER LOGIN </a>
+                <!-- <a target="_blank" ng-href="http://app.2world.online/" class="btn btn-primary btn-block"> FAZER LOGIN </a> -->
+              </div>
+
             </form>
             <span style="text-align:center !important; font-size:15px; font-weight: 500;" class="text-danger"></span>
           </div>

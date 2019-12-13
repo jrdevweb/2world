@@ -30,6 +30,49 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
 
   $scope.dataAtual = new Date();
 
+  $scope.atualizarProduto = function(){
+    $http({
+      method: 'POST',
+      url: "api/atualizarProduto.php",
+      data : $scope.dadosproduto,
+    }).success(function(data){
+      if(data.error) {
+        $scope.errorDescricaoProduto = data.error.descricao;
+        $scope.errorValorProduto = data.error.valor;
+        $scope.errorQuantidadeDisponivel = data.error.quantidade_disponivel;
+        $scope.errorImagemProduto = data.error.imagem_produto;
+        $scope.mensagemSucesso = null;
+        console.log(data);
+      } else {
+        $scope.dadosproduto = null;
+        $scope.errorDescricaoProduto = null;
+        $scope.errorValorProduto = null;
+        $scope.errorQuantidadeDisponivel = null;
+        $scope.errorImagemProduto = null;
+        $("#modal").modal('show');
+        $scope.mensagemSucesso = data.message;
+        $scope.dadosProduto($routeParams.id);
+      }
+    });
+  }
+
+  $scope.dadosproduto = [];
+  $scope.dadosProduto = function(id) {
+    $scope.id = $routeParams.id;
+    $http({
+      method : 'POST',
+      url : 'api/produtoId.php',
+      data : {'id':id}
+    }).then(function(response) {
+      var nome = response.data;
+      $scope.dadosproduto = nome[0];
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+  $scope.dadosProduto($routeParams.id);
+
   $scope.cadastrarProduto = function(){
     $http({
       method: 'POST',

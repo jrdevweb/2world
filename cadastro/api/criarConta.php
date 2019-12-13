@@ -42,6 +42,11 @@ if(empty($inputs->email))
   $error["email"] = "O email é obrigatório *";
 }
 
+if(empty($inputs->plano))
+{
+  $error["plano"] = "O plano de investimento é obrigatório *";
+}
+
 elseif(isset($inputs->email)){
 
   $email = mysqli_real_escape_string($connect, $inputs->email);
@@ -79,10 +84,15 @@ else
   $senha = mysqli_real_escape_string($connect, md5($inputs->senha));
   $datecreated = date("Y/m/d H:i:s");
   $ativo = 'NAO';
+  $plano_id = mysqli_real_escape_string($connect, $inputs->plano);
 
-  $query = "INSERT INTO usuario (nome, data_nascimento, email, senha, ativo, id_usuario_indicador, datecreated) VALUES
+  $CONSULTA = mysqli_query($connect, " SELECT * FROM planos WHERE id = '$plano_id'");
+  $r = mysqli_fetch_assoc($CONSULTA);
+  $plano_valor = $r['valor_plano'];
 
-  ('$nome','$data_nascimento','$email','$senha','$ativo','$indicacao','$datecreated')";
+  $query = "INSERT INTO usuario (nome, data_nascimento, email, senha, ativo, plano_id, plano_valor, id_usuario_indicador, datecreated) VALUES
+
+  ('$nome','$data_nascimento','$email','$senha','$ativo','$plano_id','$plano_valor','$indicacao','$datecreated')";
 
   if(mysqli_query($connect, $query))
   {

@@ -19,6 +19,19 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     $scope.fakeIntro = false;
   }, 750);
 
+  $scope.listarPlanos2W = function(){
+    $scope.planos = [];
+    $http({
+      method : 'GET',
+      url : 'api/planos.php',
+    }).then(function(response) {
+      $scope.planos = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
   $scope.cadastro = [];
   $scope.dadosIndicador = function(id) {
     $scope.id = $routeParams.id;
@@ -48,6 +61,7 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
         $scope.errorDataNascimento = data.error.data_nascimento;
         $scope.errorCPF = data.error.cpf;
         $scope.errorEmail = data.error.email;
+        $scope.errorPlano = data.error.plano;
         $scope.errorSenha = data.error.senha;
         $scope.mensagemSucesso = null;
         console.log(data);
@@ -57,6 +71,7 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
         $scope.errorNome = null;
         $scope.errorDataNascimento = null;
         $scope.errorEmail = null;
+        $scope.errorPlano = null;
         $scope.errorCPF = null;
         $scope.errorSenha = null;
         $("#modal").modal('show');

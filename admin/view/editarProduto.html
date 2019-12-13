@@ -11,7 +11,7 @@
               </ol>
             </div>
             <h4 class="page-title">
-              CADASTRO DE PRODUTO
+              DADOS DE PRODUTO
             </h4>
           </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header" style="background:#4d5668; color: #fff;">
-              CADASTRO DE PRODUTO
+              DADOS DE PRODUTO
             </div>
             <div class="card-block" style="padding:15px;">
               <div class="row">
@@ -28,14 +28,14 @@
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>CODIGO: </label>
-                    <p><b>Gerado automaticamente ao salvar</b> </p>
+                    <p><b>{{dadosproduto.codigo}}</b> </p>
                   </div>
                 </div>
 
                 <div class="col-md-12">
                   <div class="form-group" >
                     <label>DESCRIÇÃO: </label>
-                    <input type="text" class="form-control" placeholder="Digite a descrição do produto" ng-model="produto.descricao">
+                    <input type="text" class="form-control" placeholder="Digite a descrição do produto" ng-model="dadosproduto.descricao">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorDescricaoProduto" ng-bind-html="errorDescricaoProduto"></span>
                   </div>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>VALOR ($):  </label>
-                    <input type="text" class="form-control" placeholder="Digite o valor" ng-model="produto.valor">
+                    <input type="text" class="form-control" placeholder="Digite o valor" ng-model="dadosproduto.valor">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorValorProduto" ng-bind-html="errorValorProduto"></span>
                   </div>
                 </div>
@@ -51,24 +51,35 @@
                 <div class="col-md-6">
                   <div class="form-group" >
                     <label>QUANTIDADE:  </label>
-                    <input type="text" class="form-control" placeholder="Digite a quantidade disponível" ng-model="produto.quantidade_disponivel">
+                    <input type="text" class="form-control" placeholder="Digite a quantidade disponível" ng-model="dadosproduto.quantidade_disponivel">
                     <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorQuantidadeDisponivel" ng-bind-html="errorQuantidadeDisponivel"></span>
                   </div>
                 </div>
 
-                <!-- <div class="col-md-12">
+                <div class="col-md-6">
                   <div class="form-group" >
-                    <label>IMAGEM PRODUTO:  </label>
-                    <input type="text" class="form-control" placeholder="Digite a url da imagem do produto" ng-model="produto.imagem_produto">
-                    <span class="text-validacao-error text-danger animated fadeIn" ng-show="errorImagemProduto" ng-bind-html="errorImagemProduto"></span>
+                    <img class="img-responsive" width="200px;" ng-src="./assets/images/img_produto/{{dadosproduto.imagem_produto}}" alt="">
                   </div>
-                  <img ng-show="produto.imagem_produto.length > 0" class="img-responsive" ng-src="{{produto.imagem_produto}}" width="250px;">
-                </div> -->
+                </div>
+
+                <div class="col-md-12">
+                   <div class="row" ng-controller="uploadCtrl">
+                     <div class="col-md-12" style="margin-top:5px;">
+                       <input type="file" style="border:0px;" class="btn btn-primary btn-sm btn-block" file-input="files"/>
+                     </div>
+                     <div class="col-md-12" style="margin-top:10px; ">
+                       <span class="text-secondary" style="font-size:12px; font-weight:bold;" ng-bind-html="errorImagemProduto"></span>
+                     </div>
+                     <div class="col-md-12" style="margin-bottom:10px;">
+                       <button ng-click="carregarImgProduto(dadosproduto.id)" class="btn btn-primary btn-sm">Enviar Imagem Produto</button>
+                     </div>
+                   </div>
+                 </div>
 
               </div>
             </div>
             <div class="card-footer">
-              <button class="btn btn-primary" ng-click="cadastrarProduto()">CADASTRAR PRODUTO</button>
+              <button class="btn btn-primary" ng-click="atualizarProduto()">ATUALIZAR PRODUTO</button>
             </div>
           </div>
         </div>

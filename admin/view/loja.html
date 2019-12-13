@@ -33,6 +33,7 @@
                       <th>CODIGO</th>
                       <th>DESCRICAO</th>
                       <th>VALOR</th>
+                      <th>IMAGEM</th>
                       <th>QUANTIDADE DISPONIVEL</th>
                       <th>AÇÃO</th>
                     </tr>
@@ -43,9 +44,13 @@
                       <td ng-bind-html="p.codigo"></td>
                       <td ng-bind-html="p.descricao"></td>
                       <td ng-bind-html="p.valor"></td>
+
+                      <td >
+                        <img width="35px;" ng-src="./assets/images/img_produto/{{p.imagem_produto}}" alt="">
+                      </td>
                       <td ng-bind-html="p.quantidade_disponivel"></td>
                       <td>
-                        <a ng-href="#/saque/{{s.id}}" class="btn btn-primary btn-sm"> EDITAR </a>
+                        <a ng-href="#/produto/{{p.id}}" class="btn btn-primary btn-sm"> EDITAR </a>
                       </td>
                     </tr>
                   </tbody>

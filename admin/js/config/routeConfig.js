@@ -90,6 +90,11 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
+	$routeProvider.when("/produto/:id", {
+		templateUrl: "view/editarProduto.html",
+		controller: "homeCtrl",
+	});
+
 	$routeProvider.otherwise({
 		redirectTo: "/"});
 

@@ -28,6 +28,19 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
+  $scope.listarUsuarioInativo = function(){
+    $scope.usuarioinativo = [];
+    $http({
+      method : 'GET',
+      url : 'api/usuarioInativo.php',
+    }).then(function(response) {
+      $scope.usuarioinativo = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
   $scope.listarProdutos = function(){
     $scope.produtos = [];
     $http({
