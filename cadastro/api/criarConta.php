@@ -92,7 +92,7 @@ else
   $ID_USUARIO_RECUPERADO = mysqli_insert_id($connect);
   $STATUS = 'PENDENTE';
   $DATA_INDICACAO = date("Y/m/d H:i:s");
-  $query = "INSERT INTO indicacao (id_usuario, id_usuario_indicado, data_indicacao, status) VALUES('$indicacao','$ID_USUARIO_RECUPERADO','$DATA_INDICACAO','$STATUS')";
+  $query = "INSERT INTO indicacao (id_usuario_indicou, id_usuario_indicado, data_indicacao, status) VALUES('$indicacao','$ID_USUARIO_RECUPERADO','$DATA_INDICACAO','$STATUS')";
   if(mysqli_query($connect, $query))
   {
 

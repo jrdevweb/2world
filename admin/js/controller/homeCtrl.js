@@ -30,6 +30,31 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
 
   $scope.dataAtual = new Date();
 
+  $scope.cadastrarProduto = function(){
+    $http({
+      method: 'POST',
+      url: "api/cadastrarProduto.php",
+      data : $scope.produto,
+    }).success(function(data){
+      if(data.error) {
+        $scope.errorDescricaoProduto = data.error.descricao;
+        $scope.errorValorProduto = data.error.valor;
+        $scope.errorQuantidadeDisponivel = data.error.quantidade_disponivel;
+        $scope.errorImagemProduto = data.error.imagem_produto;
+        $scope.mensagemSucesso = null;
+        console.log(data);
+      } else {
+        $scope.produto = null;
+        $scope.errorDescricaoProduto = null;
+        $scope.errorValorProduto = null;
+        $scope.errorQuantidadeDisponivel = null;
+        $scope.errorImagemProduto = null;
+        $("#modal").modal('show');
+        $scope.mensagemSucesso = data.message;
+      }
+    });
+  }
+
   $scope.listarProdutosLoja = function(){
     $scope.produtosloja = [];
     $http({

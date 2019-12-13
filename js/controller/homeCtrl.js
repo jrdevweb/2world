@@ -28,6 +28,20 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
+  $scope.listarProdutos = function(){
+    $scope.produtos = [];
+    $http({
+      method : 'GET',
+      url : 'api/produtos.php',
+    }).then(function(response) {
+      $scope.produtos = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+
   $scope.transferirSaldo = function(){
     $http({
       method: 'POST',
