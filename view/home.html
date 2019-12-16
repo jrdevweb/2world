@@ -38,7 +38,7 @@
                       <t ng-repeat="s in saldoconta">{{s.saldo_conta | currency}}</t>
                       <b class="pull-right" style="color:#fff; font-size:20px;">0 de 200%</b></h2>
                       <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 1%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"  ng-style="{ 'width' : width}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>
@@ -95,8 +95,8 @@
                       <div class="col-md-12">
                         <p style="color:#fff;">AVISO</p>
                         <div ng-show="usuario.ativo == 'NAO'">
-                          <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">Você não possui nenhum plano ativo, compre um agora e comece ter seus ganhos diários!</h2>
-                          <a ng-href="#/planos" class="btn btn-success btn-sm"name="button">CONHEÇA OS PLANOS</a>
+                          <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">Você possui uma fatura em aberto!</h2>
+                          <a ng-href="#/planos" class="btn btn-warning btn-sm"name="button">PAGAR FATURA</a>
                         </div>
                         <div ng-show="usuario.ativo == 'SIM'">
                           <h2 class="text-mobile-card text-success" style="color: #FFF; font-size:20px; ">Parabéns, você já possui um plano na 2WORLD!</h2>

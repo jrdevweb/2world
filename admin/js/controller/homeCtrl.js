@@ -147,53 +147,41 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   }
 
-  $scope.aprovarCadastro = function(){
+  $scope.aprovarCompra = function(){
     $http({
       method: 'POST',
       url: "api/aprovarCompra.php",
-      data : $scope.robocheckout,
+      data : $scope.planocomprado,
     }).success(function(data){
       if(data.error) {
         $scope.mensagemSucesso = null;
         console.log(data);
       } else {
-        $scope.robocheckout = null;
+        $scope.planocomprado = null;
         $("#modal").modal('show');
         $scope.mensagemSucesso = data.message;
-        $scope.dadosRoboChekout($routeParams.id);
+        $scope.dadosPlanoComprado($routeParams.id);
       }
     });
   }
 
-  $scope.robocheckout = [];
-  $scope.dadosRoboChekout = function(id) {
+  $scope.planocomprado = [];
+  $scope.dadosPlanoComprado = function(id) {
     $scope.id = $routeParams.id;
     $http({
       method : 'POST',
-      url : 'api/roboCheckoutId.php',
+      url : 'api/planoCompradoId.php',
       data : {'id':id}
     }).then(function(response) {
       var nome = response.data;
-      $scope.robocheckout = nome[0];
+      $scope.planocomprado = nome[0];
     }, function(response) {
       console.log(response.data);
       console.log(response.status);
     });
   };
-  $scope.dadosRoboChekout($routeParams.id);
+  $scope.dadosPlanoComprado($routeParams.id);
 
-  $scope.listarRoboCheckout = function(){
-    $scope.roboCheck = [];
-    $http({
-      method : 'GET',
-      url : 'api/roboCheckouts.php',
-    }).then(function(response) {
-      $scope.roboCheck = response.data;
-    }, function(response) {
-      console.log(response.data);
-      console.log(response.status);
-    });
-  };
 
   $scope.listarPlanosComprados = function(){
     $scope.planoscomprados = [];

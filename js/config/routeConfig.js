@@ -55,6 +55,12 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
+	$routeProvider.when("/indicados", {
+		templateUrl: "view/indicados.html",
+		controller: "homeCtrl",
+	});
+
+
 	$routeProvider.otherwise({
 		redirectTo: "/"});
 

@@ -28,6 +28,21 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
+  $scope.width = '10px';
+
+  $scope.listarMeusIndicados = function(){
+    $scope.indicados = [];
+    $http({
+      method : 'GET',
+      url : 'api/indicados.php',
+    }).then(function(response) {
+      $scope.indicados = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
   $scope.listarUsuarioInativo = function(){
     $scope.usuarioinativo = [];
     $http({
@@ -84,6 +99,7 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
       url : 'api/saldoConta.php',
     }).then(function(response) {
       $scope.saldoconta = response.data;
+      $scope.porcentagem = $scope.saldoconta;
     }, function(response) {
       console.log(response.data);
       console.log(response.status);

@@ -11,35 +11,36 @@
               </ol>
             </div>
             <h4 class="page-title">
-              PLANO
+              FATURA
             </h4>
           </div>
         </div>
       </div>
 
       <div class="col-md-12">
-        <h3 class="text-white">PLANO</h3>
+        <h3 class="text-white">FATURA</h3>
         <div class="row">
           <div class="col-md-4">
             <div class="card">
-              <div class="card-header card-gradient" style="text-align:center; font-size:20px;">
-                {{robocheckout.descricao}}
+              <div class="card-header card-gradient" style="text-align:center; font-size:20px; background: #161E43; color: #fff;">
+                {{planocomprado.descricao}}
               </div>
               <div class="card-block" style="padding:10px; text-align:left;">
                 <div class="card">
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Usuário: {{robocheckout.nome}}</li>
-                    <li class="list-group-item">Valor: $ {{robocheckout.valor}}</li>
-                    <li class="list-group-item" ng-if="robocheckout.status == 'PENDENTE'">Status de pagamento: <b class="text-danger">{{robocheckout.status}}</b></li>
-                    <li class="list-group-item" ng-if="robocheckout.status == 'PAGO'">Status de pagamento: <b class="text-success">{{robocheckout.status}}</b></li>
-                    <li class="list-group-item">Data: {{robocheckout.data_compra}}</li>
-                    <li class="list-group-item">Diário: {{robocheckout.porcentagem_ganho}}%</li>
+                    <li class="list-group-item">Usuário: {{planocomprado.nome}}</li>
+                    <li class="list-group-item">Email: {{planocomprado.email}}</li>
+                    <li class="list-group-item">Valor: {{planocomprado.valor_plano}}</li>
+                    <li class="list-group-item">Descrição Plano: {{planocomprado.descricao}}</li>
+                    <li class="list-group-item" ng-if="planocomprado.status == 'PENDENTE'">PENDENTE</li>
+                    <li class="list-group-item" ng-if="planocomprado.status == 'PAGO'">PAGO</li>
+                    <li class="list-group-item">Data: {{planocomprado.data_compra}}</li>
                   </ul>
 
                 </div>
               </div>
               <div class="card-footer text-muted">
-                <button class="btn btn-primary" name="button" ng-click="aprovarCadastro()">APROVAR COMPRA</button>
+                <button class="btn btn-primary" name="button" ng-click="aprovarCompra()">APROVAR COMPRA</button>
               </div>
             </div>
           </div>

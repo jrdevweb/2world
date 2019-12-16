@@ -36,13 +36,14 @@
                     <li class="list-group-item"> Nivel Indicação: <b> {{dadosPlano2W.nivel_indicacao | number}} pessoas</b></li>
                   </ul>
                 </div>
-                <a name="plano" class="btn btn-warning btn-block">Aguardando pagamento</a>
+                <a name="plano" class="btn btn-warning btn-block" ng-if="dadosPlano2W.status == 'PENDENTE'">Aguardando pagamento</a>
+                <a name="plano" class="btn btn-success btn-block" ng-if="dadosPlano2W.status == 'PAGO'">Pago</a>
               </div>
             </div>
           </div>
 
           <div class="col-md-9" ng-init="listarValorBitcoin()">
-            <div class="card">
+            <div class="card" ng-if="dadosPlano2W.status == 'PENDENTE'">
               <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
                 <i class="fab fa-bitcoin"></i>
                 PAGAMENTO
@@ -82,7 +83,7 @@
           </div>
 
           <div class="col-md-9" ng-init="listarValorBitcoin()">
-            <div class="card">
+            <div class="card" ng-if="dadosPlano2W.status == 'PENDENTE'">
               <div class="card-header" style="text-align:left; font-size:20px; background: #161E43; color: #fff;">
                 <i class="fas fa-piggy-bank"></i>
                 PAGAMENTO

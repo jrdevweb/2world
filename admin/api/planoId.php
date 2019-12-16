@@ -6,7 +6,7 @@ $ID_PLANO = mysqli_real_escape_string($connect, $data->id);
 $query = "SELECT * FROM planos WHERE id = '$ID_PLANO'";
 $result = mysqli_query($connect, $query);
 
-if(mysqli_num_rows($result) > 0)
+if(mysqli_num_rows($result) > 0) 
 {
   while($row = mysqli_fetch_array($result))
   {

@@ -36,12 +36,12 @@ angular.module("ntx32App").config(function ($routeProvider) {
 	});
 
 	$routeProvider.when("/planos-comprados", {
-		templateUrl: "view/vendas.html",
+		templateUrl: "view/planosComprados.html",
 		controller: "homeCtrl",
 	});
 
 	$routeProvider.when("/plano-comprado/:id", {
-		templateUrl: "view/vendaId.html",
+		templateUrl: "view/planoCompradoId.html",
 		controller: "homeCtrl",
 	});
 
