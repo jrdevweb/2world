@@ -8,7 +8,6 @@
           <div class="page-title-box">
             <div class="page-title-right">
               <ol class="breadcrumb m-0">
-
                 <!-- <li style="margin-right:20px;"><a href="#" onclick="doGTranslate('pt|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('pt|pt');return false;" title="Portuguese" class="gflag nturl" style="background-position:-300px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Portuguese" /></a><a href="#" onclick="doGTranslate('pt|es');return false;" title="Spanish" class="gflag nturl" style="background-position:-600px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Spanish" /></a></li> -->
                 <li class="breadcrumb-item"><a ><span class="badge badge-success"> USUÁRIO ATIVO</span></a></li>
                 <li class="breadcrumb-item"><a style="font-size:15px; color: #fff;"><i class="fas fa-shopping-basket"></i> Itens em seu carrinho (0)</a></li>
@@ -29,16 +28,16 @@
         </div>
         <div class="col-md-12">
           <div class="row">
-            <div class="col-md-3" ng-init="listarSaldoConta()">
+            <div class="col-md-3" ng-init="listarSaldoConta()" >
               <div class="card-box widget-chart-one animated fadeIn animDelay02" style="background: #2d3d88; padding:20px; height:130px;">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-12" ng-init="listarBarraProgresso()">
                     <p style="color:#fff;">RENDIMENTO</p>
                     <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">
                       <t ng-repeat="s in saldoconta">{{s.saldo_conta | currency}}</t>
-                      <b class="pull-right" style="color:#fff; font-size:20px;">0 de 200%</b></h2>
-                      <div class="progress">
-                        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"  ng-style="{ 'width' : width}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                      <b class="pull-right" style="color:#fff; font-size:20px;">{{barraprogresso}} de 200%</b></h2>
+                      <div class="progress" >
+                        <div  class="progress-bar progress-bar-striped bg-success" role="progressbar"  ng-style="{ 'width' : barraprogresso + 'px'  }" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>
