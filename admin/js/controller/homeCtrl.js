@@ -187,7 +187,7 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     $scope.planoscomprados = [];
     $http({
       method : 'GET',
-      url : 'api/planosComprados.php',
+      url : 'api/planosCompradosUser.php',
     }).then(function(response) {
       $scope.planoscomprados = response.data;
     }, function(response) {
