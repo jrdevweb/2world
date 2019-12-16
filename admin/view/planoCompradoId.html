@@ -32,6 +32,7 @@
                     <li class="list-group-item">Email: {{planocomprado.email}}</li>
                     <li class="list-group-item">Valor: {{planocomprado.valor_plano}}</li>
                     <li class="list-group-item">Descrição Plano: {{planocomprado.descricao}}</li>
+                    <li class="list-group-item">HASH:<span style="font-size: 15px;" class="badge badge-success" ng-if="planocomprado.hash.length > 0"> {{planocomprado.hash}}</span></li>
                     <li class="list-group-item" ng-if="planocomprado.status == 'PENDENTE'">PENDENTE</li>
                     <li class="list-group-item" ng-if="planocomprado.status == 'PAGO'">PAGO</li>
                     <li class="list-group-item">Data: {{planocomprado.data_compra}}</li>
@@ -40,7 +41,8 @@
                 </div>
               </div>
               <div class="card-footer text-muted">
-                <button class="btn btn-primary" name="button" ng-click="aprovarCompra()">APROVAR COMPRA</button>
+                <button class="btn btn-primary" name="button" ng-click="aprovarCompra()" ng-if="planocomprado.status == 'PENDENTE'">APROVAR COMPRA</button>
+                <span class="badge badge-success" ng-if="planocomprado.status == 'PAGO'"> FATURA PAGA</span></a>
               </div>
             </div>
           </div>
