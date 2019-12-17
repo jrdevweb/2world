@@ -27,8 +27,9 @@
           <div class="card-block" style="padding:15px;">
             <div class="row" ng-init="listarMeusIndicados()">
               <div class="col-md-2" ng-repeat="i in indicados">
-                <div class="card-box widget-chart-one"  style="background: #2d3d88; padding:20px;" >
+                <div class="card-box widget-chart-one"  style="background: #2d3d88; padding:20px; text-align:center;" >
                   <div class="col-md-12" >
+                    <i style="color: #fff; font-size:20px;"class="fas fa-user"></i>
                     <h3 style="color: #fff;">{{i.nome | uppercase}}</h3>
                     <p style="color: #fff;">{{i.email}}</p>
                     <p style="color: #fff;">{{i.data_indicacao}}</p>

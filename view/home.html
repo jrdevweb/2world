@@ -35,9 +35,9 @@
                     <p style="color:#fff;">RENDIMENTO</p>
                     <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">
                       <t ng-repeat="s in saldoconta">{{s.saldo_conta | currency}}</t>
-                      <b class="pull-right" style="color:#fff; font-size:20px;">{{barraprogresso}} de 200%</b></h2>
+                      <b class="pull-right" style="color:#fff; font-size:18px;">{{barraprogresso * 2 | limitTo: 5}} de 200%</b></h2>
                       <div class="progress" >
-                        <div  class="progress-bar progress-bar-striped bg-success" role="progressbar"  ng-style="{ 'width' : barraprogresso + 'px'  }" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div  class="progress-bar progress-bar-striped bg-success active" role="progressbar"  ng-style="{ 'width' : barraprogresso + '%' }" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>
@@ -93,10 +93,14 @@
                     <div class="row">
                       <div class="col-md-12">
                         <p style="color:#fff;">AVISO</p>
-                        <div ng-show="usuario.ativo == 'NAO'">
-                          <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">Você possui uma fatura em aberto!</h2>
-                          <a ng-href="#/planos" class="btn btn-warning btn-sm"name="button">PAGAR FATURA</a>
+
+                        <div ng-show="usuario.ativo == 'NAO'" ng-init="listarPlanosCompradosPeloUsuario()">
+                          <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">Você possui faturas em aberto!</h2>
+                          <div ng-repeat="pc in planosUsuario | filter: {status: 'PENDENTE'}">
+                            <a ng-href="#/plano-comprado/{{pc.id}}" class="btn btn-primary" name="button"><i class="fas fa-barcode"></i> FATURA {{pc.id}}</a>
+                          </div>
                         </div>
+
                         <div ng-show="usuario.ativo == 'SIM'">
                           <h2 class="text-mobile-card text-success" style="color: #FFF; font-size:20px; ">Parabéns, você já possui um plano na 2WORLD!</h2>
                           <p style="color: #fff;"> Plano Atual: {{usuario.plano_valor | currency}} </br>
@@ -104,11 +108,11 @@
                           </div>
                         </div>
 
-                        <div class="col-md-12">
-                          <p style="color:#fff;">Indique amigos e aumente seus ganhos.</p>
+                        <div class="col-md-12" style="margin-top:20px;">
                           <div class="card-box widget-chart-one" style="background: #161E43; padding:20px;">
                             <div class="row">
-                              <div class="col-md-12" >
+                              <div class="col-md-12">
+                                <p style="color:#fff;">Indique amigos e aumente seus ganhos.</p>
                                 <h2 class=" text-mobile-card" style="color: #FFF; font-size:15px;">LINK DE INDICAÇÃO</h2>
                                   <!-- <a style="color: #fff;" target="_blank" ng-href="http://localhost/2world/cadastro/#/{{usuario.id}}"><i class="fas fa-user-friends"></i> http://localhost/2world/cadastro/{{usuario.id}}</a> -->
                                   <a style="color: #fff;" target="_blank" ng-href="http://app.2world.online/cadastro/#/{{usuario.id}}"><i class="fas fa-user-friends"></i> http://app.2world.online/cadastro/#/{{usuario.id}}</a>

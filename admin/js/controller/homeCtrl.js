@@ -377,10 +377,10 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
 
   $scope.listarPagamentos();
 
-  $scope.pagamentoDiario = function(){
+  $scope.pagarRendimentoDiario = function(){
     $http({
       method: 'POST',
-      url: "api/pagamentoDiario.php",
+      url: "api/pagarRendimentoDiario.php",
       data : $scope.pagar,
     }).success(function(data){
       if(data.error) {

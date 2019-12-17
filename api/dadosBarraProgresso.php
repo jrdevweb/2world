@@ -4,15 +4,24 @@ $output = array();
 session_start();
 $ID_USUARIO = $_SESSION['id'];
 $cem = 100;
+$duzentos = 200;
 
-$CONSULTA_SUM = mysqli_query($connect, "SELECT plano_valor FROM usuario WHERE id = '$ID_USUARIO'");
+$CONSULTA_SUM = mysqli_query($connect, "SELECT * FROM usuario WHERE id = '$ID_USUARIO'");
 $r = mysqli_fetch_assoc($CONSULTA_SUM);
 
+//pega saldo da conta e valor do plano
+$saldo_conta = $r['saldo_conta'];
 $valor_plano = $r['plano_valor'];
 
-$valor_barra_progresso = $valor_plano / 100;
+//calcula valor total do plano
+$valor_total_plano = ($valor_plano * $duzentos) / $cem;
+//calcula valor maximo com o valor total
+$valor_max = $valor_total_plano + $valor_plano;
 
-echo json_encode($valor_barra_progresso);
+//calcula porcentagem do saldo
+$porcentagem_barraprogressp = ($saldo_conta * 100) / $valor_max;
+
+echo json_encode($porcentagem_barraprogressp);
 
 
 ?>
