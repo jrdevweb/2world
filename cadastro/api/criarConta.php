@@ -67,10 +67,20 @@ else
     $data["message"] = " ".$nome.", seu cadastro foi realizado com sucesso na plataforma!";
   }
 
+  //INSERINDO INDICAÇÃO COM NIVEL DE INDICAÇÃO
+
   $ID_USUARIO_RECUPERADO = mysqli_insert_id($connect);
   $STATUS = 'PENDENTE';
   $DATA_INDICACAO = date("Y/m/d H:i:s");
-  $query = "INSERT INTO indicacao (id_usuario_indicou, id_usuario_indicado, data_indicacao, status) VALUES('$indicacao','$ID_USUARIO_RECUPERADO','$DATA_INDICACAO','$STATUS')";
+
+  // PEGANDO ULTIMA INDICAÇÃO DO USUÁRIO QUE INDICOU COM MAX TRAZENDO O NIVEL
+  $CONSULTANIVEL = mysqli_query($connect, " SELECT max(nivel_indicacao) as nivel from indicacao where id_usuario_indicou = '$indicacao'");
+  $r_nivel = mysqli_fetch_assoc($CONSULTANIVEL);
+  $nivel_indicacao = $r_nivel['nivel'];
+
+  $proximo_nivel = $nivel_indicacao + 1;
+
+  $query = "INSERT INTO indicacao (id_usuario_indicou, id_usuario_indicado, data_indicacao, nivel_indicacao, status) VALUES('$indicacao','$ID_USUARIO_RECUPERADO','$DATA_INDICACAO','$proximo_nivel','$STATUS')";
   if(mysqli_query($connect, $query))
   {
 
@@ -82,7 +92,7 @@ else
   $query = "INSERT INTO planos_comprados (usuario_id, plano_id, status, data_compra) VALUES ('$ID_USUARIO_RECUPERADO','$plano_id','$status','$data_compra')";
   if(mysqli_query($connect, $query))
   {
-    
+
   }
 
 }

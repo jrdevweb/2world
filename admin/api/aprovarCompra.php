@@ -44,19 +44,24 @@ else
 
   }
 
-  //PEGANDO VALOR DO PLANO E PORCENTAGEM DIARIO DO PLANO
+  //PEGANDO A PORCENTAGEM DA INDICACAO
 
-  $CONSULTAVALOR = mysqli_query($connect, " SELECT * FROM planos p
-                                                    inner join usuario u on u.plano_id = p.id where u.id = '$ID_USUARIO'");
-  $r = mysqli_fetch_assoc($CONSULTAVALOR);
 
-  $valor_plano = $r['valor_plano'];
-  $porcentagem = $r['porcentagem_diario'];
+  $CONSULTANIVEL = mysqli_query($connect, " SELECT * from indicacao where id_usuario_indicado = '$ID_USUARIO'");
+  $r_nivel = mysqli_fetch_assoc($CONSULTANIVEL);
+  $nivel_indicacao = $r_nivel['nivel_indicacao'];
+
+  //PEGANDO PORCNTAGEM DO NIVEL DE INDICAÇÃO
+
+  $CONSULTAINDICACAO = mysqli_query($connect, " SELECT * from niveis_indicacao where nivel = '$nivel_indicacao'");
+  $r_indicacao = mysqli_fetch_assoc($CONSULTAINDICACAO);
+  $porcentagem_nivel_indicacao = $r_indicacao['porcentagem_nivel'];
+
+
+  //CALCULO VALOR * PORCENTAGEM / 100
+
   $cem = 100;
-
-  $valor = ($valor_plano * $porcentagem) / $cem;
-
-  //ATUALIZANDO SALDO DA PESSOA QUE INDICOU
+  $valor = ($PLANO_VALOR * $porcentagem_nivel_indicacao) / $cem;
 
   $query = "UPDATE usuario set saldo_conta = saldo_conta + $valor WHERE id = '$ID_USUARIO_INDICADOR'";
   if(mysqli_query($connect, $query))
