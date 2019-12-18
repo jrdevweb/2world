@@ -29,7 +29,7 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>CARTEIRA</th>
+                      <th>MÉTODO DE RECEBIMENTO</th>
                       <th>USUARIO</th>
                       <th>STATUS</th>
                       <th>DATA SOLICITAÇÃO</th>
@@ -39,7 +39,8 @@
                   <tbody style="color: #FFF;" dir-paginate="s in saque | itemsPerPage: 10">
                     <tr >
                       <td ng-bind-html="s.id"></td>
-                      <td ng-bind-html="s.carteira"></td>
+                      <td ng-if="s.metodo_recebimento == 'CONTA_BANCARIA'"><i class="fas fa-university"></i> CONTA BANCÁRIA</td>
+                      <td ng-if="s.metodo_recebimento == 'CARTEIRA_BITCOIN'"><i class="fab fa-bitcoin"></i> BITCOIN</td>
                       <td ng-bind-html="s.nome"></td>
                       <td ng-if="s.status == 'PENDENTE'"><span class="badge badge-danger">PENDENTE</span></td>
                       <td ng-if="s.status == 'PAGO'"><span class="badge badge-success">PAGO</span></td>

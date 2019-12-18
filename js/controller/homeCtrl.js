@@ -28,6 +28,19 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     }, 500 );
   }
 
+  $scope.listarMeusRendimentos = function(){
+    $scope.rendimentos = [];
+    $http({
+      method : 'GET',
+      url : 'api/rendimentos.php',
+    }).then(function(response) {
+      $scope.rendimentos = response.data;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
   $scope.listarBarraProgresso = function(){
     $scope.barraprogresso = [];
     $http({
@@ -294,13 +307,13 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
       data : $scope.saque,
     }).success(function(data){
       if(data.error) {
-        $scope.errorCarteira = data.error.carteira;
+        $scope.errorRecebimento = data.error.metodo_recebimento;
         $scope.mensagemSucesso = null;
         console.log(data);
       } else {
         $scope.saque = null;
-        $scope.errorCarteira = null;
-        $scope.messageSuccesso = data.message;
+        $scope.errorRecebimento = null;
+        $scope.mensagemSucesso = data.message;
         $("#modal").modal('show');
       }
     });

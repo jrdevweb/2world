@@ -20,8 +20,8 @@ angular.module("ntx32App").config(function ($routeProvider) {
 		controller: "homeCtrl",
 	});
 
-	$routeProvider.when("/relatorio", {
-		templateUrl: "view/relatorio.html",
+	$routeProvider.when("/rendimentos", {
+		templateUrl: "view/rendimentos.html",
 		controller: "homeCtrl",
 	});
 

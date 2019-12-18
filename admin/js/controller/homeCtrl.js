@@ -196,6 +196,21 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
     });
   };
 
+  $scope.listarSaldoConta = function(){
+    $scope.saldoconta = [];
+    $http({
+      method : 'GET',
+      url : 'api/saldoConta.php',
+    }).then(function(response) {
+      $scope.saldoconta = response.data;
+      $scope.porcentagem = $scope.saldoconta;
+    }, function(response) {
+      console.log(response.data);
+      console.log(response.status);
+    });
+  };
+
+
   $scope.fazerPagamentoSaque = function(){
     $http({
       method: 'POST',
@@ -203,12 +218,10 @@ angular.module("ntx32App").controller("homeCtrl", function ($scope, $http, $rout
       data : $scope.dadossaque,
     }).success(function(data){
       if(data.error) {
-        $scope.errorHash = data.error.hash_bitcoin;
         $scope.mensagemSucesso = null;
         console.log(data);
       } else {
         $scope.dadossaque = null;
-        $scope.errorHash = null;
         $("#modal").modal('show');
         $scope.mensagemSucesso = data.message;
         $scope.dadosSaque($routeParams.id);

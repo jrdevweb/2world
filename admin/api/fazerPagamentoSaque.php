@@ -6,11 +6,6 @@ require 'conectar.php';
 session_start();
 $ID_USUARIO = $_SESSION['id_usuario_saque'];
 
-if(empty($inputs->hash_bitcoin))
-{
-  $error["hash_bitcoin"] = "O HASH ou Assinatura da transação é obrigatório *";
-}
-
 if(!empty($error))
 {
   $data["error"] = $error;
@@ -18,18 +13,23 @@ if(!empty($error))
 else
 {
 
-  $hash = mysqli_real_escape_string($connect, $inputs->hash_bitcoin);
+  $CONSULTA = mysqli_query($connect, " SELECT * FROM usuario WHERE id = '$ID_USUARIO'");
+  $r = mysqli_fetch_assoc($CONSULTA);
+  $saldo_conta = $r['saldo_conta'];
+
   $status = 'PAGO';
+  $status_pendente = 'PENDENTE';
   $data_pagamento = date("Y/m/d H:i:s");
-  $query = "UPDATE saque_usuario set status = '$status', data_pagamento = '$data_pagamento', hash_bitcoin = '$hash' WHERE id_usuario = '$ID_USUARIO'";
+  $query = "UPDATE saque_usuario set status = '$status', data_pagamento = '$data_pagamento', valor = '$saldo_conta' WHERE id_usuario = '$ID_USUARIO' and status = '$status_pendente'";
   if(mysqli_query($connect, $query))
   {
 
   }
-  $query = "UPDATE pagamento_diario set status = '$status', data_pagamento = '$data_pagamento' WHERE id_usuario = '$ID_USUARIO'";
+  $zero = 0;
+  $query = "UPDATE usuario set saldo_conta = '$zero' WHERE id = '$ID_USUARIO'";
   if(mysqli_query($connect, $query))
   {
-    $data["message"] = "O saque foi pago com sucesso.";
+    $data["message"] = "O Saque foi pago com sucesso. O valor foi debitado da conta do usuário.";
   }
 }
 

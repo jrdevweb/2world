@@ -8,34 +8,26 @@ $ID_USUARIO = $_SESSION['id'];
 require 'conectar.php';
 $data_hoje_mostrar = date("d/m/Y H:i:s");
 
-$data_hoje = date("Y/m/d");
-if(isset($data_hoje)){
-  $query = mysqli_query($connect, " SELECT * FROM saque_usuario where id_usuario = '$ID_USUARIO' and date_format(data_solicitacao,'%Y/%m/%d') = '$data_hoje' LIMIT 1");
+if(empty($inputs->metodo_recebimento))
+{
+  $error["metodo_recebimento"] = "O método de recebimento é obrigatório *";
+}
+
+elseif(isset($inputs->metodo_recebimento)){
+
+  $status_pendente = 'PENDENTE';
+  $query = mysqli_query($connect, "SELECT * from saque_usuario where id_usuario = '$ID_USUARIO' and status = '$status_pendente'");
   if(mysqli_num_rows($query) > 0)
-
-  $error["carteira"] = "Você já fez saque hoje. Data do último saque: ".$data_hoje_mostrar." ";
+  $error["metodo_recebimento"] = "Você já possui um saque com situação 'PENDENTE'. Aguarde o pagamento para solicitar um novo saque.";
 }
 
-$CONSULTA = mysqli_query($connect, " SELECT * FROM usuario where id = '$ID_USUARIO'");
-$r = mysqli_fetch_assoc($CONSULTA);
-$bitcoin = $r['bitcoin'];
-
-if(empty($bitcoin))
-{
-  $error["carteira"] = "Você precisa atualizar os dados da sua carteira de Bitcoin";
-}
-
-$CONSULTA = mysqli_query($connect, " SELECT * FROM planos p inner join usuario usr on p.id = usr.plano_id WHERE usr.id = '$ID_USUARIO'");
-$r = mysqli_fetch_assoc($CONSULTA);
-$valor_minimo_saque = $r['valor_minimo_saque'];
-
-$CONSULTA_SUM = mysqli_query($connect, "SELECT sum(valor_dolar) as valor_dolar FROM pagamento_diario WHERE id_usuario = '$ID_USUARIO' and status = 'PENDENTE'");
+$CONSULTA_SUM = mysqli_query($connect, "SELECT * FROM usuario WHERE id = '$ID_USUARIO' ");
 $r = mysqli_fetch_assoc($CONSULTA_SUM);
-$valor_dolar = $r['valor_dolar'];
+$valor_saldo = $r['saldo_conta'];
 
-if($valor_dolar < $valor_minimo_saque)
+if($valor_saldo <= 0)
 {
-  $error["carteira"] = "O valor mínimo de saque para seu plano é de USD $".$valor_minimo_saque." ";
+  $error["metodo_recebimento"] = "Você não possui saldo para realizar este saque.";
 }
 
 if(!empty($error))
@@ -47,12 +39,12 @@ else
 
   $data_solicitacao = date("Y/m/d H:i:s");
   $status = 'PENDENTE';
-  $carteira = 'BITCOIN';
+  $metodo_recebimento = mysqli_real_escape_string($connect, $inputs->metodo_recebimento);
 
-  $query = "INSERT INTO saque_usuario (id_usuario, carteira, status, data_solicitacao) VALUES ('$ID_USUARIO','$carteira','$status','$data_solicitacao')";
+  $query = "INSERT INTO saque_usuario (id_usuario, metodo_recebimento, status, data_solicitacao) VALUES ('$ID_USUARIO','$metodo_recebimento','$status','$data_solicitacao')";
   if(mysqli_query($connect, $query))
   {
-    $data["message"] = "Seu saque foi solicitado com sucesso. Prazo para pagamento em até 24 horas.";
+    $data["message"] = "Seu saque foi solicitado com sucesso.";
   }
 }
 

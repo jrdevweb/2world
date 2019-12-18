@@ -1,7 +1,9 @@
 <?php
 require 'conectar.php';
 $output = array();
-$query = "SELECT su.id, su.metodo_recebimento, u.nome, su.status, su.data_solicitacao FROM saque_usuario su inner join usuario u on u.id = su.id_usuario";
+session_start();
+$ID_USUARIO = $_SESSION['id'];
+$query = "SELECT * FROM usuario where id = '$ID_USUARIO'";
 
 $result = mysqli_query($connect, $query);
 
