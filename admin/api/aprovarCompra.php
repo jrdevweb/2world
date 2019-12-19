@@ -31,14 +31,14 @@ else
   }
 
 
-  //ATUALIZANDO USUARIO COMO ATIVO, ATUALIZANDO SALDO COM O PLANO
+  //ATUALIZANDO USUARIO COMO ATIVO
 
   $CONSULTAINDICACAO = mysqli_query($connect, " SELECT * FROM usuario where id = '$ID_USUARIO'");
   $r = mysqli_fetch_assoc($CONSULTAINDICACAO);
   $ID_USUARIO_INDICADOR = $r['id_usuario_indicador'];
   $PLANO_VALOR = $r['plano_valor'];
 
-  $queryUsuario = "UPDATE usuario set ativo = '$statusUsuario', saldo_conta = saldo_conta + '$PLANO_VALOR' WHERE id = '$ID_USUARIO'";
+  $queryUsuario = "UPDATE usuario set ativo = '$statusUsuario'  WHERE id = '$ID_USUARIO'";
   if(mysqli_query($connect, $queryUsuario))
   {
 
@@ -68,7 +68,7 @@ else
   {
 
   }
-
+  
   //ATUALIZANDO INDICAÇÃO PARA PAGA
 
   $query = "UPDATE indicacao set status = 'PAGO' WHERE id_usuario_indicou = '$ID_USUARIO_INDICADOR' and id_usuario_indicado = '$ID_USUARIO'";
