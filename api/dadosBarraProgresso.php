@@ -4,7 +4,7 @@ $output = array();
 session_start();
 $ID_USUARIO = $_SESSION['id'];
 $cem = 100;
-$duzentos = 100;
+$duzentos = 200;
 
 $CONSULTA_SUM = mysqli_query($connect, "SELECT * FROM usuario WHERE id = '$ID_USUARIO'");
 $r = mysqli_fetch_assoc($CONSULTA_SUM);

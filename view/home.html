@@ -31,11 +31,11 @@
             <div class="col-md-3" ng-init="listarSaldoConta()" >
               <div class="card-box widget-chart-one animated fadeIn animDelay02" style="background: #2d3d88; padding:20px; height:130px;">
                 <div class="row">
-                  <div class="col-md-12" ng-init="listarBarraProgresso()"> 
+                  <div class="col-md-12" ng-init="listarBarraProgresso()">
                     <p style="color:#fff;">RENDIMENTO</p>
                     <h2 class="text-mobile-card" style="color: #FFF; font-size:20px; ">
                       <t ng-repeat="s in saldoconta">{{s.saldo_conta | currency}}</t>
-                      <b class="pull-right" style="color:#fff; font-size:18px;">{{barraprogresso * 2 | limitTo: 5}} de 200%</b></h2>
+                      <b class="pull-right" style="color:#fff; font-size:18px;">{{barraprogresso * 3 | limitTo: 5}} de 300%</b></h2>
                       <div class="progress" >
                         <div  class="progress-bar progress-bar-striped bg-success active" role="progressbar"  ng-style="{ 'width' : barraprogresso + '%' }" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
@@ -104,7 +104,7 @@
                         <div ng-show="usuario.ativo == 'SIM'">
                           <h2 class="text-mobile-card text-success" style="color: #FFF; font-size:20px; ">Parabéns, você já possui um plano na 2WORLD!</h2>
                           <p style="color: #fff;"> Plano Atual: {{usuario.plano_valor | currency}} </br>
-                            Rendimento de até 200%</p>
+                            Rendimento de até 300%</p>
                           </div>
                         </div>
 
